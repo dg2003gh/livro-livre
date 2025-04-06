@@ -186,7 +186,7 @@ export default function NewBook({
         </div>
         <Modal
           title={"📚 " + t("title::form")}
-          className="h-4/5"
+          className="h-3/5"
           openButtonRef={openNewBookRef}
         >
           <form onSubmit={addNewBook} className="flex flex-col gap-5">
