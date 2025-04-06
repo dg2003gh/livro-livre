@@ -184,7 +184,11 @@ export default function NewBook({
         >
           <RiFunctionAddLine className="text-3xl" />
         </div>
-        <Modal title={"📚 " + t("title::form")} openButtonRef={openNewBookRef}>
+        <Modal
+          title={"📚 " + t("title::form")}
+          className="h-4/5"
+          openButtonRef={openNewBookRef}
+        >
           <form onSubmit={addNewBook} className="flex flex-col gap-5">
             <label className="flex flex-col gap-2">
               {t("label::book::title")}
