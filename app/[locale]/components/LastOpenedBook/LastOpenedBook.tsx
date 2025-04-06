@@ -5,8 +5,8 @@ import { bookType, dataMapType } from "../../types";
 import Card from "../Card/Card";
 import { getSession } from "next-auth/react";
 
-export default function LastOpenedBook() {
-  const session = getSession();
+export default async function LastOpenedBook() {
+  const session = await getSession();
   const t = useTranslations("Card");
 
   const ISSERVER = typeof window === "undefined";
@@ -18,16 +18,14 @@ export default function LastOpenedBook() {
 
   return dataMap.books
     .filter(({ id }: bookType) => id == dataMap.lastOpenedBook)
-    .map(({ id, bookCoverId }: bookType) => {
-      return (
-        <Card
-          className="fixed right-0 md:right-5 motion-safe:animate-bounce duration-700 bottom-2 scale-50 z-11 hover:scale-50"
-          key={id}
-          title={t("title::lastOpened")}
-          coverId={bookCoverId}
-          bookId={id}
-          showTools={false}
-        />
-      );
-    });
+    .map(({ id, bookCoverId }: bookType) => (
+      <Card
+        className="fixed right-0 md:right-5 motion-safe:animate-bounce duration-700 bottom-2 scale-50 z-11 hover:scale-50"
+        key={id}
+        title={t("title::lastOpened")}
+        coverId={bookCoverId}
+        bookId={id}
+        showTools={false}
+      />
+    ));
 }
