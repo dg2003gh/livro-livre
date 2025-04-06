@@ -146,7 +146,7 @@ export default function Dock({
           className="group relative flex text-center cursor-pointer disabled:text-gray-700 items-center justify-center rounded-full"
         >
           <DropDown
-            title="aA"
+            buttonText="aA"
             buttonRef={scaleRef}
             buttonClassList="w-0 h-0 border-none p-0"
             optionsClassList="w-fit left-1/2 transform -translate-x-1/2"

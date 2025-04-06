@@ -5,12 +5,14 @@ import { ReactNode, RefObject, useRef } from "react";
 export default function DropDown({
   buttonRef,
   title,
+  buttonText,
   children,
   buttonClassList,
   optionsClassList,
 }: {
   buttonRef: RefObject<HTMLButtonElement | null>;
   title?: string;
+  buttonText?: string;
   children: ReactNode;
   buttonClassList?: string;
   optionsClassList?: string;
@@ -60,7 +62,7 @@ export default function DropDown({
             buttonClassList
           }
         >
-          <b>{title}</b>
+          <b>{buttonText}</b>
         </button>
         <div
           ref={optionsRef}
