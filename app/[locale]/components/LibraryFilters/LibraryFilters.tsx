@@ -63,23 +63,25 @@ export const sortLibrary = (
   tagFilter: Array<string>,
   a: bookType,
   b: bookType,
-) => {
+): number => {
   switch (order) {
     case Orders.ASCENDENT:
       return a.title.localeCompare(b.title);
     case Orders.DECRESCENT:
       return b.title.localeCompare(a.title);
     case Orders.FAVORITES:
-      return b.userPrefs.favorite == true && a.userPrefs.favorite == false;
+      return b.userPrefs.favorite == true && a.userPrefs.favorite == false
+        ? 0
+        : 1;
     case Orders.BY_TAG:
-      return (
-        b.tags.some((tag: string) =>
-          tagFilter.some((tagf: string) => tag == tagf),
-        ) &&
+      return b.tags.some((tag: string) =>
+        tagFilter.some((tagf: string) => tag == tagf),
+      ) &&
         !a.tags.some((tag: string) =>
           tagFilter.some((tagf: string) => tag == tagf),
         )
-      );
+        ? 0
+        : 1;
   }
 };
 
