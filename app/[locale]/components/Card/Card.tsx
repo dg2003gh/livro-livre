@@ -48,12 +48,11 @@ export default function Card({
 
   useEffect(() => {
     const getCover = localStorage.getItem(coverId);
-
-    if (!getCover) return setReload();
+    if (!getCover) return;
 
     setCover(getCover);
     setBackground(getCover);
-  }, [coverId, reload]);
+  }, [coverId, cover]);
 
   return (
     <BaseView
