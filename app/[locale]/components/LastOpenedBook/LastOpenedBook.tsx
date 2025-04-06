@@ -5,8 +5,8 @@ import { bookType, dataMapType } from "../../types";
 import Card from "../Card/Card";
 import { getSession } from "next-auth/react";
 
-export default async function LastOpenedBook() {
-  const session = await getSession();
+export default function LastOpenedBook() {
+  const session = getSession();
   const t = useTranslations("Card");
 
   const ISSERVER = typeof window === "undefined";
