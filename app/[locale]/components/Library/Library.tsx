@@ -1,7 +1,7 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { bookType, Orders, Visuals } from "../../types";
-import { RefObject, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { getDataMapInCloud, saveBooks } from "@/app/[locale]/utils";
 
 import Image from "next/image";
@@ -12,6 +12,7 @@ import LibraryFilters, {
   sortLibrary,
   visualizationType,
 } from "../LibraryFilters/LibraryFilters";
+import LastOpenedBook from "../LastOpenedBook/LastOpenedBook";
 
 export default function Library({
   refreshLibrary,
@@ -138,11 +139,14 @@ export default function Library({
   return (
     <div className="flex flex-col items-center justify-center w-full p-4 md:pr-20">
       {session ? (
-        <LibraryFilters
-          setTagFilter={setTagFilter}
-          setVisual={setVisual}
-          setOrder={setOrder}
-        />
+        <>
+          <LastOpenedBook />
+          <LibraryFilters
+            setTagFilter={setTagFilter}
+            setVisual={setVisual}
+            setOrder={setOrder}
+          />
+        </>
       ) : null}
       <div className={isGridClassList}>
         {session || (session && refreshLibrary) ? (

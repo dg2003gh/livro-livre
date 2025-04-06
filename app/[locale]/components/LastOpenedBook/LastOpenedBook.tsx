@@ -3,10 +3,8 @@
 import { useTranslations } from "next-intl";
 import { bookType, dataMapType } from "../../types";
 import Card from "../Card/Card";
-import { getSession } from "next-auth/react";
 
 export default function LastOpenedBook() {
-  const session = getSession();
   const t = useTranslations("Card");
 
   const ISSERVER = typeof window === "undefined";
@@ -14,7 +12,7 @@ export default function LastOpenedBook() {
     ? JSON.parse(localStorage.getItem("dataMap") ?? "null")
     : null;
 
-  if (!session || !dataMap.books || !dataMap.lastOpenedBook) return;
+  if (!dataMap.books || !dataMap.lastOpenedBook) return;
 
   return dataMap.books
     .filter(({ id }: bookType) => id == dataMap.lastOpenedBook)
