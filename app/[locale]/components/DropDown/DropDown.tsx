@@ -73,7 +73,7 @@ export default function DropDown({
             optionsClassList
           }
         >
-          <ul className="flex flex-col w-fit min-w-52 gap-2">{children}</ul>
+          <ul className="flex flex-col gap-2">{children}</ul>
         </div>
       </div>
       <div

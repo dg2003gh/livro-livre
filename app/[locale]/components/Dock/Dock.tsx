@@ -152,24 +152,12 @@ export default function Dock({
             optionsClassList="w-fit left-1/2 transform -translate-x-1/2"
           >
             <ul ref={scaleListRef}>
-              <li className="rounded-lg px-2" onClick={changeScale}>
-                0.5
-              </li>
-              <li className="rounded-lg" onClick={changeScale}>
-                1.0
-              </li>
-              <li className="rounded-lg" onClick={changeScale}>
-                1.5
-              </li>
-              <li className="rounded-lg" onClick={changeScale}>
-                2.0
-              </li>
-              <li className="rounded-lg" onClick={changeScale}>
-                2.5
-              </li>
-              <li className="rounded-lg" onClick={changeScale}>
-                3.0
-              </li>
+              <li onClick={changeScale}>0.5</li>
+              <li onClick={changeScale}>1.0</li>
+              <li onClick={changeScale}>1.5</li>
+              <li onClick={changeScale}>2.0</li>
+              <li onClick={changeScale}>2.5</li>
+              <li onClick={changeScale}>3.0</li>
             </ul>
           </DropDown>
         </button>

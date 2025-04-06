@@ -50,7 +50,7 @@ export default function ChangeLanguage() {
             title={t(`select::languages.${lang}`)}
             onClick={() => setLanguage(lang)}
             className={
-              "flex gap-5 items-center hover:text-gray-400 " + selected
+              "flex w-44 gap-5 items-center hover:text-gray-400 " + selected
             }
             key={key}
           >
