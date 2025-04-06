@@ -25,7 +25,6 @@ export default function LastOpenedBook() {
           key={id}
           title={t("title::lastOpened")}
           coverId={bookCoverId}
-          cover={null}
           bookId={id}
           showTools={false}
         />
