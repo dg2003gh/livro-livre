@@ -46,7 +46,7 @@ export default function Library({
 
   const AddBook = () => {
     return (
-      <div className="flex flex-col items-center gap-10 justify-center text-3xl absolute left-1/2 top-1/2 transform  -translate-1/2">
+      <div className="flex flex-col items-center text-center gap-10 justify-center text-3xl absolute left-1/2 top-1/2 transform  -translate-1/2">
         {t("message::addNewBook")}
         <Image src="/imgs/newbook.svg" alt="" width={250} height={250} />
       </div>

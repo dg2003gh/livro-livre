@@ -14,6 +14,7 @@ import Modal from "../Modal/Modal";
 import { useSession } from "next-auth/react";
 import ChangeLanguage from "../ChangeLanguage/ChangeLanguage";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 export default function Header({
   setSearchValue,
@@ -145,7 +146,32 @@ export default function Header({
         footer="with ❤️ by Douglas Guimarães."
         openButtonRef={infoRef}
       >
-        <div>hduikjhfjkdflshkljdfhsjklhfdsjklh</div>
+        <div>
+          <article>
+            <h2>Changing language</h2>
+          </article>
+          <article>
+            <h2>Register a new book</h2>
+            <p>Lets start by login with your google account.</p>
+            <Image
+              src="/imgs/howToUseIt/login.jpg"
+              height="150"
+              width="150"
+              alt="login button"
+            />
+            <p>
+              After that click on add new book button, in this form you can
+              register your new book.
+            </p>
+            <p>
+              When the upload is finished, the book will be available on your
+              library.
+            </p>
+          </article>
+          <h2>Library filters</h2>
+          <h2>Download your book back</h2>
+          <h2>Delete a book</h2>
+        </div>
       </Modal>
       <Modal
         title="📃 What's new?"

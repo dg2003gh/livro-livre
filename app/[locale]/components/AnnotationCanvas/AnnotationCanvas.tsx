@@ -2,7 +2,7 @@
 import { ReactElement, useEffect, useRef } from "react";
 import { Tools, themeType } from "../../types";
 
-import { rgbToHex, useMousePosition } from "../../utils";
+import { rgbToHex } from "../../utils";
 
 //shapes and tools
 import { pencil } from "./shapes/tools/pencil";
@@ -39,8 +39,6 @@ export default function AnnotationCanvas({
   const prevPoint = useRef<{ x: number; y: number } | null>(null);
 
   const snapshot = useRef<ImageData>(null);
-
-  const mousePosition = useMousePosition();
 
   const annotationCanvasRef = useRef<HTMLCanvasElement>(null);
   const canvas = annotationCanvasRef.current;
@@ -98,11 +96,11 @@ export default function AnnotationCanvas({
     prevPoint.current = null;
   };
 
-  const handlerMouseDown = () => {
+  const handlerMouseDown = (e: any) => {
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx) return;
 
-    initPos.current = { x: mousePosition.x ?? 0, y: mousePosition.y ?? 0 };
+    initPos.current = { x: e.clientX ?? 0, y: e.clientY ?? 0 };
     snapshot.current = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
     ctx.beginPath();
@@ -121,16 +119,29 @@ export default function AnnotationCanvas({
     canvas.height = window.innerHeight;
   };
 
-  const handler = () => {
+  const touchHandler = (e: TouchEventInit) => {
+    if (!e.touches) return;
+
+    var touch = e.touches[0];
+    var mouseEvent = new MouseEvent("mousemove", {
+      clientX: touch.clientX,
+      clientY: touch.clientY,
+    });
+    canvas?.dispatchEvent(mouseEvent);
+  };
+
+  const handler = (e: any) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    touchHandler(e);
+
     const ctx = canvas?.getContext("2d");
     if (!ctx || !mouseDown || !showAnnotation || !snapshot.current) return;
 
     ctx.putImageData(snapshot.current, 0, 0);
 
-    const currentPos = computePointInCanvas(
-      mousePosition.x ?? 0,
-      mousePosition.y ?? 0,
-    );
+    const currentPos = computePointInCanvas(e.clientX ?? 0, e.clientY ?? 0);
 
     draw(ctx, currentPos);
 
