@@ -22,7 +22,6 @@ export default function SignInGoogle() {
     return (
       <DropDown
         title={t("title::logged", { account: session.user.name ?? "" })}
-        optionsClassList="right-10"
         buttonRef={buttonRef}
       >
         <li

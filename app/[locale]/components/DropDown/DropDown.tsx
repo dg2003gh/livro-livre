@@ -24,6 +24,22 @@ export default function DropDown({
 
     if (!options || !layer) return;
 
+    const optionsBounding = options.getBoundingClientRect();
+
+    // define y position
+    if (optionsBounding.y + 20 > window.innerHeight) {
+      options.classList.replace("top-12", "bottom-16");
+    } else {
+      options.classList.replace("bottom-16", "top-12");
+    }
+
+    // define x position
+    if (optionsBounding.x + 20 > window.innerWidth) {
+      options.classList.replace("right-12", "left-12");
+    } else {
+      options.classList.replace("left-12", "right-12");
+    }
+
     options.classList.toggle("invisible");
     options.classList.toggle("opacity-0");
 
@@ -34,7 +50,7 @@ export default function DropDown({
     <>
       <div
         onClick={toggleOptions}
-        className="flex flex-col items-center justify-center"
+        className="relative flex flex-col items-center justify-center"
       >
         <button
           ref={buttonRef}
@@ -43,13 +59,16 @@ export default function DropDown({
             "rounded-xl cursor-pointer w-[48px] h-[48px] bg-cover bg-no-repeat border-2 border-white " +
             buttonClassList
           }
-        ></button>
+        >
+          <b>{title}</b>
+        </button>
         <div
           ref={optionsRef}
           className={
-            `absolute z-2 invisible opacity-0 border group-focus:flex top-14
+            `absolute z-2 invisible opacity-0 border group-focus:flex 
                       bg-[rgba(0,0,0,0.5)] backdrop-blur-md p-3 rounded-xl
-                      transition-opacity duration-800 ` + optionsClassList
+                      transition-opacity duration-800 top-12 right-12 ` +
+            optionsClassList
           }
         >
           <ul className="flex flex-col w-fit min-w-52 gap-2">{children}</ul>

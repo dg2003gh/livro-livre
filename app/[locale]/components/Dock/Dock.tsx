@@ -10,6 +10,7 @@ import {
   RiHome8Line,
 } from "react-icons/ri";
 import { rgbToHex } from "../../utils";
+import DropDown from "../DropDown/DropDown";
 
 export default function Dock({
   bookIndex,
@@ -29,12 +30,17 @@ export default function Dock({
   setShowAnnotation: Function;
 }) {
   const t = useTranslations("PdfViewer.Dock");
+
+  const scaleRef = useRef<HTMLButtonElement>(null);
+  const scaleListRef = useRef<HTMLUListElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
   const currentPageTheme =
     JSON.stringify(theme.bg) == JSON.stringify(themeColors.black);
 
   const ISSERVER = typeof window === "undefined";
   const dataMap = !ISSERVER
-    ? JSON.parse(localStorage.getItem("dataMap") ?? "{}")
+    ? JSON.parse(localStorage.getItem("dataMap") ?? "null")
     : null;
 
   const onPageChange = (num: number) => {
@@ -54,9 +60,6 @@ export default function Dock({
     currentPage > 1;
     setCurrentPage(currentPage - 1);
   };
-
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const scaleListRef = useRef<HTMLUListElement>(null);
 
   const changeButtonTheme = () => {
     if (!buttonRef.current) return;
@@ -142,10 +145,11 @@ export default function Dock({
           onClick={(e) => e.currentTarget.focus()}
           className="group relative flex text-center cursor-pointer disabled:text-gray-700 items-center justify-center rounded-full"
         >
-          <b>{"aA"}</b>
-          <div
-            onClick={(e) => e.currentTarget.focus()}
-            className="absolute hidden group-focus:flex bottom-10 bg-[rgba(0,0,0,0.5)] backdrop-blur-md p-3 rounded-xl"
+          <DropDown
+            title="aA"
+            buttonRef={scaleRef}
+            buttonClassList="w-0 h-0 border-none p-0"
+            optionsClassList="w-fit left-1/2 transform -translate-x-1/2"
           >
             <ul ref={scaleListRef}>
               <li className="rounded-lg px-2" onClick={changeScale}>
@@ -167,7 +171,7 @@ export default function Dock({
                 3.0
               </li>
             </ul>
-          </div>
+          </DropDown>
         </button>
         <button
           title={t("title::draw")}

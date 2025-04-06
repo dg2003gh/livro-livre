@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import DropDown from "../DropDown/DropDown";
 
-export default function ChangeLanguage({ title }: { title?: string }) {
+export default function ChangeLanguage() {
   const langButtonRef = useRef<HTMLButtonElement>(null);
   const [currentLang, setCurrentLang] = useState<string>(availableLanguages[0]);
   const router = useRouter();
@@ -40,7 +40,6 @@ export default function ChangeLanguage({ title }: { title?: string }) {
   return (
     <DropDown
       title={t(`select::languages.${currentLang}`)}
-      optionsClassList="right-10"
       buttonRef={langButtonRef}
     >
       {availableLanguages.map((lang: string, key: number) => {

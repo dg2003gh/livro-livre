@@ -133,7 +133,7 @@ export default function Header({
               }}
               className="absolute flex md:static md:hover:bg-transparent rounded-xl top-2 right-2 gap-2 justify-center items-center text-center"
             >
-              <ChangeLanguage title={t("title::changeLanguage")} />
+              <ChangeLanguage />
               <SignInGoogle />
             </span>
           </div>

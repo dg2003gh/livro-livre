@@ -128,7 +128,7 @@ export default function BaseView({
         {showTools && (
           <div
             className={
-              "md:opacity-0 group-hover:opacity-100 duration-500 hover:scale-105 transition-all flex flex-col gap-2 absolute bottom-2 right-2 " +
+              "md:opacity-0 group-hover:opacity-100 duration-500 hover:scale-105 transition-all flex flex-col gap-2 absolute bottom-2 right-[0px] " +
               toolsClassName
             }
             onClick={(e) => e.stopPropagation()}
