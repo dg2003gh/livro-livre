@@ -121,7 +121,7 @@ export default function BaseView({
     <>
       <div
         ref={wrapperRef}
-        className="relative group"
+        className="w-full relative group"
         onClick={setAsLastOpened}
       >
         {children}

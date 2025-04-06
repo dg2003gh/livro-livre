@@ -1,9 +1,13 @@
 "use client";
 
 import { bookType, dataMapType, themeColors } from "../../types";
-import { FormEvent, KeyboardEvent, useRef } from "react";
+import { FormEvent, KeyboardEvent, RefObject, useRef } from "react";
 import { RiDragDropLine, RiFunctionAddLine } from "react-icons/ri";
-import { identifierCode, setCloudMetadata } from "@/app/[locale]/utils";
+import {
+  DATAMAP_KEY,
+  identifierCode,
+  setCloudMetadata,
+} from "@/app/[locale]/utils";
 import { createFolder, uploadFile } from "../../googleAPI";
 import Modal from "../Modal/Modal";
 import { useSession } from "next-auth/react";
@@ -11,7 +15,6 @@ import { useTranslations } from "next-intl";
 
 export default function NewBook({
   setSendNotification,
-  setRefreshLibrary,
 }: {
   setSendNotification: Function;
   setRefreshLibrary: Function;
@@ -24,21 +27,15 @@ export default function NewBook({
   const t = useTranslations("NewBookForm");
 
   const addBookToDataMap = (book: bookType) => {
-    const getDataMap = localStorage.getItem("dataMap");
+    const getDataMap = localStorage.getItem(DATAMAP_KEY);
 
     if (!getDataMap) return;
     const dataMap = JSON.parse(getDataMap);
 
     if (!dataMap.books) dataMap.books = [];
-
     dataMap.books.push(book);
 
-    setCloudMetadata(dataMap);
-
-    if (Window != undefined)
-      localStorage.setItem("dataMap", JSON.stringify(dataMap));
-
-    console.log("dataMap: ", JSON.stringify(dataMap));
+    setCloudMetadata(dataMap).then();
   };
 
   const createDataMapIfNotExists = async (
@@ -73,7 +70,7 @@ export default function NewBook({
       const metadataData = await metadataResponse.json();
       dataMap.metadataFileId = metadataData.id;
 
-      localStorage.setItem("dataMap", JSON.stringify(dataMap));
+      localStorage.setItem(DATAMAP_KEY, JSON.stringify(dataMap));
     }
     return dataMap;
   };
@@ -87,9 +84,10 @@ export default function NewBook({
 
     form.submitButton.disabled = true;
 
-    const getDataMap = localStorage.getItem("dataMap") ?? "{}";
-    const bookCover = formData.get("bookCover");
-    const book = formData.get("book");
+    const getDataMap = localStorage.getItem(DATAMAP_KEY) ?? "null";
+
+    const bookCover = formData.get("bookCover") as File;
+    const book = formData.get("book") as File;
 
     const dataMap = await createDataMapIfNotExists(getDataMap);
 

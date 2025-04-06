@@ -11,7 +11,7 @@ export default function LastOpenedBook() {
 
   const ISSERVER = typeof window === "undefined";
   const dataMap: dataMapType = !ISSERVER
-    ? JSON.parse(localStorage.getItem("dataMap") ?? "{}")
+    ? JSON.parse(localStorage.getItem("dataMap") ?? "null")
     : null;
 
   if (!session || !dataMap.books || !dataMap.lastOpenedBook) return <></>;
@@ -25,6 +25,7 @@ export default function LastOpenedBook() {
           key={id}
           title={t("title::lastOpened")}
           coverId={bookCoverId}
+          cover={null}
           bookId={id}
           showTools={false}
         />

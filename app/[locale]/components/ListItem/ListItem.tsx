@@ -55,6 +55,7 @@ export default function ListItem({
     setCover(getCover);
     setBackground(getCover);
   }, [coverId, cover, reload]);
+
   const listClassName = icons ? "pb-2" : "pb-12";
 
   return (
@@ -70,7 +71,7 @@ export default function ListItem({
     >
       <li
         title={title}
-        className="border-2 border-white cursor-pointer hover:scale-105 transition-transform duration-500 flex flex-col rounded-xl"
+        className="w-full border-2 border-white cursor-pointer hover:scale-105 transition-transform duration-500 flex flex-col rounded-xl"
       >
         <div className={listClassName + " rounded-xl"} ref={listRef}>
           <header className="flex border-b-2 border-white px-2">

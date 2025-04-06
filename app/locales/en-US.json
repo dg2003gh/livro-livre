@@ -26,6 +26,7 @@
 
   "Card": {
     "title::lastOpened": "Last Book opened",
+    "title::cover": "{title} cover",
     "message::loadingCover": "Loading cover...",
     "message::download": "Download book to my device",
     "message::favorite": "Remove book from favorites",

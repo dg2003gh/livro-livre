@@ -1,5 +1,5 @@
 "use client";
-import { MouseEvent, useEffect, useRef, useState } from "react";
+import { MouseEvent, RefObject, useEffect, useRef, useState } from "react";
 import { bookType, dataMapType, Orders, Visuals } from "../../types";
 import Image from "next/image";
 import {
@@ -28,15 +28,18 @@ export const visualizationType = (visual: Visuals, book: bookType) => {
   }
 };
 
-const GRID = ({ id, title, bookCoverId, userPrefs }: bookType) => (
-  <Card
-    key={id}
-    title={title}
-    bookId={id}
-    coverId={bookCoverId}
-    isFavorite={userPrefs.favorite}
-  />
-);
+const GRID = ({ id, title, bookCoverId, userPrefs }: bookType) => {
+  return (
+    <Card
+      key={id}
+      title={title}
+      bookId={id}
+      coverId={bookCoverId}
+      isFavorite={userPrefs.favorite}
+    />
+  );
+};
+
 const LIST = (
   { id, title, bookCoverId, author, releaseDate, userPrefs }: bookType,
   icons?: boolean,
@@ -161,7 +164,7 @@ export default function LibraryFilters({
       localStorage.getItem("dataMap") ?? "null",
     );
 
-    if (!dataMap) return;
+    if (!dataMap || dataMap == null) return;
 
     let tagSet: Array<string> = [];
 

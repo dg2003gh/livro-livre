@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import NewBook from "./components/NewBook/NewBook";
 import Library from "./components/Library/Library";
 import Notification from "./components/Notification/Notification";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import LastOpenedBook from "./components/LastOpenedBook/LastOpenedBook";
 import { useReload } from "./utils";
 
@@ -39,7 +39,7 @@ export default function Home() {
       </main>
       <footer className="fixed z-10 bottom-5 bg-[rgba(0,0,0,0.5)] backdrop-blur-md p-10 w-[95vw] flex self-end gap-6 flex-wrap items-center justify-center border rounded-2xl left-1/2 transform -translate-x-1/2">
         <b className="absolute bottom-2 left-4 text-sm opacity-60 ">
-          public-beta-v1.0
+          {process.env.APP_VERSION}
         </b>
         <span>
           <b>{"Livro Livre@2025"}</b>

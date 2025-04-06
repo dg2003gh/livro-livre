@@ -4,20 +4,16 @@ import { usePathname, useRouter } from "@/app/i18n/navigation";
 import { availableLanguages } from "@/app/i18n/routing";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import DropDown from "../DropDown/DropDown";
 
 export default function ChangeLanguage({ title }: { title?: string }) {
   const langButtonRef = useRef<HTMLButtonElement>(null);
+  const [currentLang, setCurrentLang] = useState<string>(availableLanguages[0]);
   const router = useRouter();
   const pathname = usePathname();
 
   const t = useTranslations("Header");
-
-  const currentLang =
-    typeof window != "undefined"
-      ? localStorage.getItem("lang")
-      : availableLanguages[0];
 
   const initLanguage = () => {
     const langButton = langButtonRef.current;
@@ -35,8 +31,11 @@ export default function ChangeLanguage({ title }: { title?: string }) {
   };
 
   useEffect(() => {
+    const currentLang = localStorage.getItem("lang");
+
+    setCurrentLang((prevLang) => currentLang ?? prevLang);
     initLanguage();
-  });
+  }, []);
 
   return (
     <DropDown

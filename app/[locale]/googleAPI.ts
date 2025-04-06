@@ -1,15 +1,8 @@
 import { getSession } from "next-auth/react";
 
-export const setDataMapIfExistsInCloud = async (
-  name: string,
-  identifierCode: string,
-) => {
-  const session: any = await getSession();
+export const findFileId = async (query: string) => {
+  const session = await getSession();
 
-  if (!session) return;
-
-  const query = `name = '${name}' and fullText contains '${identifierCode}'`;
-  console.log("searching for ", name);
   try {
     const response = await fetch(
       `https://www.googleapis.com/drive/v3/files?q=` +
@@ -17,38 +10,28 @@ export const setDataMapIfExistsInCloud = async (
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${session.accessToken}`,
+          Authorization: `Bearer ${session?.accessToken}`,
         },
       },
     );
     if (response.ok) {
       const body = await response.json();
 
-      if (body.files.length > 0) {
-        const dataMapBlob: Blob = await downloadFile(body.files[0].id, name);
-        const dataMap = JSON.parse(await dataMapBlob.text());
-
-        localStorage.setItem("dataMap", JSON.stringify(dataMap));
-
-        console.log(name, "saved as dataMap!");
-      } else console.log(name, " not found in cloud! Continue..");
-    } else console.log(response.status);
+      return body.files[0].id; // returns the first finding id
+    } else console.error(response.status);
   } catch (error) {
-    console.error(`Error: ${name} not found!: `, error);
+    console.error(`Error: ${query} not found!: `, error);
   }
 };
 
 export const uploadFile = async (
-  file: FormDataEntryValue,
+  file: File,
   parents?: Array<string>,
-  isUpdate?: { fileId: string },
 ): Promise<any> => {
   if (!file) return;
 
   const session = await getSession();
-  const name = "file";
-  let updateFileQuery: string = ""; // define query to update a file
-  let method = isUpdate ? "PATCH" : "POST";
+  const name = file.name;
 
   const metadata = {
     name,
@@ -64,18 +47,14 @@ export const uploadFile = async (
   );
   body.append("file", file);
 
-  if (isUpdate?.fileId) {
-    updateFileQuery = `/${isUpdate.fileId}`;
-  }
-
   try {
     const response = await fetch(
-      `https://www.googleapis.com/upload/drive/v3/files${updateFileQuery}?uploadType=multipart`,
+      `https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart`,
       {
-        method,
+        method: "POST",
         body: body,
         headers: {
-          Authorization: `Bearer ${(session as any).accessToken}`,
+          Authorization: `Bearer ${session?.accessToken}`,
         },
       },
     );
@@ -85,6 +64,48 @@ export const uploadFile = async (
   } catch (error) {
     console.error(`Error uploading file ${name}: `, error);
     return error;
+  }
+};
+
+export const updateFile = async (
+  fileId: string,
+  file: File,
+): Promise<Response | undefined> => {
+  if (!file) return;
+
+  const session = await getSession();
+  const name = file.name;
+
+  const metadata = {
+    name,
+  };
+
+  const body = new FormData();
+  body.append(
+    "metadata",
+    new Blob([JSON.stringify(metadata)], {
+      type: "application/json",
+    }),
+  );
+  body.append("file", file);
+
+  try {
+    const response = await fetch(
+      `https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=multipart`,
+      {
+        method: "PATCH",
+        body: body,
+        headers: {
+          Authorization: `Bearer ${session?.accessToken}`,
+        },
+      },
+    );
+
+    console.log(`Response updating file ${name}: `, response);
+    return response;
+  } catch (error) {
+    console.error(`Error updating file ${name}: `, error);
+    return error as Response;
   }
 };
 
@@ -147,8 +168,7 @@ export const createFolder = async (
 
 export const downloadFile = async (
   fileId: string,
-  name?: string,
-): Promise<any> => {
+): Promise<Response | undefined> => {
   const session = await getSession();
 
   if (!fileId || !session) return;
@@ -159,18 +179,15 @@ export const downloadFile = async (
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${(session as any).accessToken}`,
+          Authorization: `Bearer ${session.accessToken}`,
         },
       },
     );
-    if (response.ok) {
-      console.log(`Response upload file ${name}: `, response);
 
-      return response;
-    } else return response;
+    return response;
   } catch (error) {
-    console.error(`Error uploading file ${name}: `, error);
-    return error;
+    console.error(`Error downloading file ${fileId}: `, error);
+    return error as Response;
   }
 };
 
@@ -195,9 +212,7 @@ export const deleteFile = async (
 
     console.log(`Response delete file ${name}: `, response);
 
-    if (response.ok) {
-      return response;
-    }
+    return response;
   } catch (error) {
     console.error(`Error deleting file ${name}: `, error);
     return error;

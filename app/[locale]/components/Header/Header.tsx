@@ -7,8 +7,8 @@ import {
   RiSearchLine,
 } from "react-icons/ri";
 import SignInGoogle from "../SignInGoogle/SignInGoogle";
-import { setDataMapIfExistsInCloud } from "../../googleAPI";
-import { identifierCode } from "@/app/[locale]/utils";
+
+import { getDataMapInCloud } from "@/app/[locale]/utils";
 import { useEffect, useRef } from "react";
 import Modal from "../Modal/Modal";
 import { useSession } from "next-auth/react";
@@ -39,18 +39,16 @@ export default function Header({
     refreshButton.disabled = true;
 
     refreshButton.classList.add("animate-spin");
-    await setDataMapIfExistsInCloud("metadata.json", identifierCode).then(
-      () => {
-        refreshButton.classList.remove("animate-spin");
-        setSendNotification({
-          title: "📙 Library refreshed!",
-          content: "Library is syncronized.",
-          author: "from Library system",
-        });
-        setRefreshLibrary();
-        refreshButton.disabled = false;
-      },
-    );
+    await getDataMapInCloud().then(() => {
+      refreshButton.classList.remove("animate-spin");
+      setSendNotification({
+        title: "📙 Library refreshed!",
+        content: "Library is syncronized.",
+        author: "from Library system",
+      });
+      setRefreshLibrary();
+      refreshButton.disabled = false;
+    });
   };
 
   const search = (e: any) => {

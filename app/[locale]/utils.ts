@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
-import { uploadFile } from "./googleAPI";
-import { dataMapType } from "./types";
+import { downloadFile, findFileId, updateFile, uploadFile } from "./googleAPI";
+import { bookType, dataMapType } from "./types";
 
 export const identifierCode: string =
   "Eu amo livro livre porque me faz sentir como uma barbuleta, so";
+export const DATAMAP_KEY = "dataMap";
 
 export const getAverageRGB = (src: string) => {
   const imgEl = document.createElement("img");
@@ -72,13 +73,11 @@ export const saveFile = (filename: string, file: Blob) => {
 
 export const setCloudMetadata = async (dataMap: dataMapType) => {
   const file = new File([JSON.stringify(dataMap)], "metadata.json");
-  const uploaded = await uploadFile(file, undefined, {
-    fileId: dataMap.metadataFileId,
-  });
+  const update = await updateFile(dataMap.metadataFileId, file);
 
-  console.log("metadata.json saved on cloud.");
-
-  if (uploaded.ok) return uploaded.ok;
+  if (update) {
+    localStorage.setItem(DATAMAP_KEY, JSON.stringify(dataMap));
+  }
 };
 
 export function useReload(): [boolean, () => void] {
@@ -131,4 +130,54 @@ export const useMousePosition = () => {
   }, []);
 
   return mousePosition;
+};
+
+export const getDataMapInCloud = async () => {
+  const findMetadataQuery = `name = 'metadata.json' and fullText contains '${identifierCode}'`;
+  const fileId = await findFileId(findMetadataQuery);
+
+  const metadata = downloadFile(fileId);
+
+  try {
+    metadata.then(async (res) => {
+      if (!res) return;
+
+      const metadataBody: string = await res.text();
+
+      localStorage.setItem(DATAMAP_KEY, metadataBody);
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const saveBooks = () => {
+  try {
+    const dataMap: dataMapType = JSON.parse(
+      localStorage.getItem(DATAMAP_KEY) ?? "null",
+    );
+
+    dataMap.books.map(async ({ id, bookCoverId }: bookType) => {
+      const isDownloaded = localStorage.getItem(id);
+      if (isDownloaded) return;
+
+      const book = await downloadFile(id);
+      const cover = await downloadFile(bookCoverId);
+
+      if (book && cover) {
+        try {
+          const bookBody = await book.blob();
+          const coverBody = await cover.blob();
+          if (!bookBody || !coverBody) return;
+
+          saveFile(id, bookBody);
+          saveFile(bookCoverId, coverBody);
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    });
+  } catch (e) {
+    console.log(e);
+  }
 };

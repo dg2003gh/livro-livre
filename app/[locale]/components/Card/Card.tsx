@@ -2,7 +2,7 @@
 
 import { getAverageRGB, setCloudMetadata, useReload } from "../../utils";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 import { RiLoader4Line } from "react-icons/ri";
 
 import { useTranslations } from "next-intl";
@@ -82,7 +82,7 @@ export default function Card({
           <Image
             src={cover}
             id={coverId}
-            alt=""
+            alt={t("title::cover", { title })}
             width={150}
             height={150}
             className="rounded-sm"
