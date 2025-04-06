@@ -132,9 +132,6 @@ export default function AnnotationCanvas({
 
   const handler = (e: any) => {
     e.preventDefault();
-    e.stopPropagation();
-
-    touchHandler(e);
 
     const ctx = canvas?.getContext("2d");
     if (!ctx || !mouseDown || !showAnnotation || !snapshot.current) return;
@@ -167,7 +164,13 @@ export default function AnnotationCanvas({
   useEffect(redraw, [currentPage]);
   useEffect(() => {
     if (snapshot.current) return;
+
+    canvas?.addEventListener("touchmove", touchHandler);
     redraw();
+
+    return () => {
+      canvas?.removeEventListener("touchmove", touchHandler);
+    };
   });
 
   return (
