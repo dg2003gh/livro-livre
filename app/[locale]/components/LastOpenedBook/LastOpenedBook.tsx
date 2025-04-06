@@ -3,10 +3,10 @@
 import { useTranslations } from "next-intl";
 import { bookType, dataMapType } from "../../types";
 import Card from "../Card/Card";
-import { useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 
 export default function LastOpenedBook() {
-  const { data: session } = useSession();
+  const session = getSession();
   const t = useTranslations("Card");
 
   const ISSERVER = typeof window === "undefined";
