@@ -151,14 +151,14 @@ export default function Dock({
             buttonClassList="w-0 h-0 border-none p-0"
             optionsClassList="w-fit left-1/2 transform -translate-x-1/2"
           >
-            <ul ref={scaleListRef}>
+            <span ref={scaleListRef}>
               <li onClick={changeScale}>0.5</li>
               <li onClick={changeScale}>1.0</li>
               <li onClick={changeScale}>1.5</li>
               <li onClick={changeScale}>2.0</li>
               <li onClick={changeScale}>2.5</li>
               <li onClick={changeScale}>3.0</li>
-            </ul>
+            </span>
           </DropDown>
         </button>
         <button
