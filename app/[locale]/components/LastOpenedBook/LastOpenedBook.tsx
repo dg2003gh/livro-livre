@@ -12,7 +12,7 @@ export default function LastOpenedBook() {
     ? JSON.parse(localStorage.getItem("dataMap") ?? "null")
     : null;
 
-  if (!dataMap.books || !dataMap.lastOpenedBook) return;
+  if (!dataMap || !dataMap.books || !dataMap.lastOpenedBook) return;
 
   return dataMap.books
     .filter(({ id }: bookType) => id == dataMap.lastOpenedBook)
