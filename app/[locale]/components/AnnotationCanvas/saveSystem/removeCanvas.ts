@@ -1,6 +1,5 @@
-import { setDataMapIfExistsInCloud } from "@/app/[locale]/googleAPI";
 import { dataMapType } from "@/app/[locale]/types";
-import { identifierCode } from "@/app/[locale]/utils";
+import { identifierCode, setCloudMetadata } from "@/app/[locale]/utils";
 
 export const removeCanvas = (bookIndex: number, currentPage: number) => {
   try {
@@ -19,7 +18,7 @@ export const removeCanvas = (bookIndex: number, currentPage: number) => {
     );
 
     localStorage.setItem("dataMap", JSON.stringify(dataMap));
-    setDataMapIfExistsInCloud("metadata.json", identifierCode);
+    setCloudMetadata(dataMap);
   } catch (e) {
     console.error(e);
   }

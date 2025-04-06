@@ -14,7 +14,6 @@ export const setStorageSnapshotAnnotation = (
     ].userPrefs.pagesAnnotation.findIndex(
       (annotation) => annotation.pageNum == currentPage,
     );
-    console.log(annotationIndex);
 
     if (annotationIndex == -1) return;
 
@@ -22,7 +21,6 @@ export const setStorageSnapshotAnnotation = (
       dataMap.books[bookIndex].userPrefs.pagesAnnotation[annotationIndex]
         .canvas;
 
-    console.log(canvasSnapshot);
     const img = new Image();
     img.src = canvasSnapshot;
     img.onload = () => {
