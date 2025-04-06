@@ -65,7 +65,7 @@ export default function Modal({
       <div
         ref={modalRef}
         className={
-          `fixed z-13 w-[98vw] md:w-[70vw] bg-[rgba(0,0,0,0.5)] p-5 flex flex-col gap-5 backdrop-blur-md
+          `fixed z-13 w-[98vw] md:w-[70vw] max-h-[80vh] bg-[rgba(0,0,0,0.5)] p-5 flex flex-col gap-5 backdrop-blur-md
            rounded-xl left-1/2  transform -translate-x-1/2 overflow-scroll  translate-y-[500vw] 
            duration-500 transition-all opacity-0 ` + className
         }

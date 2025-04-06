@@ -4,8 +4,7 @@ import Header from "./components/Header/Header";
 import NewBook from "./components/NewBook/NewBook";
 import Library from "./components/Library/Library";
 import Notification from "./components/Notification/Notification";
-import { useRef, useState } from "react";
-import LastOpenedBook from "./components/LastOpenedBook/LastOpenedBook";
+import { useState } from "react";
 import { useReload } from "./utils";
 
 export default function Home() {
