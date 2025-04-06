@@ -1,7 +1,7 @@
 "use client";
 
 import { bookType, dataMapType, themeColors } from "../../types";
-import { FormEvent, KeyboardEvent, RefObject, useRef } from "react";
+import { FormEvent, KeyboardEvent, useRef } from "react";
 import { RiDragDropLine, RiFunctionAddLine } from "react-icons/ri";
 import {
   DATAMAP_KEY,
@@ -180,7 +180,7 @@ export default function NewBook({
         <div
           ref={openNewBookRef}
           title={t("button::addNewBook")}
-          className="fixed top-44 right-5 cursor-pointer hover:scale-105 transition-all rounded-xl bg-[rgba(0,0,0,0.5)] backdrop-blur-md p-2 border "
+          className="fixed top-44 right-5 cursor-pointer hover:scale-105 transition-all rounded-xl bg-[rgba(0,0,0,0.5)] backdrop-blur-md p-2 border z-5 "
         >
           <RiFunctionAddLine className="text-3xl" />
         </div>
