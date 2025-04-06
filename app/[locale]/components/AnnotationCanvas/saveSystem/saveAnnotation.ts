@@ -1,6 +1,5 @@
-import { setDataMapIfExistsInCloud } from "@/app/[locale]/googleAPI";
 import { dataMapType, pagesAnnotationType } from "@/app/[locale]/types";
-import { identifierCode } from "@/app/[locale]/utils";
+import { identifierCode, setCloudMetadata } from "@/app/[locale]/utils";
 
 export const saveAnnotationPage = (
   bookIndex: number,
@@ -34,7 +33,7 @@ export const saveAnnotationPage = (
 
     localStorage.setItem("dataMap", JSON.stringify(dataMap));
 
-    setDataMapIfExistsInCloud("metadata.json", identifierCode);
+    setCloudMetadata(dataMap);
   } catch (e) {
     console.error(e);
   }
