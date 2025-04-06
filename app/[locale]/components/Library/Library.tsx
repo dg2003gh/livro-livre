@@ -1,6 +1,6 @@
 "use client";
 import { useSession } from "next-auth/react";
-import { bookType, Orders, Visuals } from "../../types";
+import { bookType, dataMapType, Orders, Visuals } from "../../types";
 import { useEffect, useState } from "react";
 import { getDataMapInCloud, saveBooks } from "@/app/[locale]/utils";
 
@@ -16,6 +16,7 @@ import LastOpenedBook from "../LastOpenedBook/LastOpenedBook";
 
 export default function Library({
   refreshLibrary,
+  setRefreshLibrary,
   searchValue,
 }: {
   refreshLibrary: boolean;
@@ -27,6 +28,7 @@ export default function Library({
 
   const [visual, setVisual] = useState<Visuals>(Visuals.GRID);
   const [order, setOrder] = useState<Orders>(Orders.ASCENDENT);
+  const [books, setBooks] = useState<Array<bookType> | null>();
 
   const [tagFilter, setTagFilter] = useState<Array<string>>([]);
 
@@ -43,6 +45,14 @@ export default function Library({
     getDataMapInCloud();
     saveBooks();
   }, [session]);
+
+  useEffect(() => {
+    const dataMap = localStorage.getItem("dataMap");
+    if (!dataMap) return;
+
+    const books = JSON.parse(dataMap).books;
+    setBooks(books);
+  }, [refreshLibrary]);
 
   const AddBook = () => {
     return (
@@ -69,14 +79,12 @@ export default function Library({
 
   const GetBooks = () => {
     try {
-      const dataMap = JSON.parse(localStorage.getItem("dataMap") ?? "null");
-
-      if (dataMap == null || dataMap.books.length <= 0) {
+      if (books == null || books.length <= 0) {
         // if there is no book
         return <AddBook />;
       }
 
-      const booksFilter = dataMap.books
+      const booksFilter = books
         .filter((book: bookType) => {
           const s = searchValue.toLowerCase();
           return (
@@ -95,16 +103,16 @@ export default function Library({
           sortLibrary(order, tagFilter, a, b),
         );
 
-      const books = booksFilter.map((book: bookType) =>
+      const displayBooks = booksFilter.map((book: bookType) =>
         visualizationType(visual, book),
       );
 
-      if (books.length <= 0) {
+      if (displayBooks.length <= 0) {
         // if the searchValue is not in card
         return <CantFindTerm />;
       }
 
-      return books;
+      return displayBooks;
     } catch (e) {
       console.log(e);
     }

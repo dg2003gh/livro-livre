@@ -124,7 +124,7 @@ export default function PdfJs({
       className="py-24 relative flex flex-col w-full h-full items-center justify-center"
     >
       <div className="overflow-scroll">
-        <canvas ref={canvasRef} className="px-10 md:p-0"></canvas>
+        <canvas ref={canvasRef} className="px-16 md:p-0"></canvas>
         <AnnotationCanvas
           color={color}
           mouseDown={mouseDown}

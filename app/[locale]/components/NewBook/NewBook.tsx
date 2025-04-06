@@ -6,6 +6,7 @@ import { RiDragDropLine, RiFunctionAddLine } from "react-icons/ri";
 import {
   DATAMAP_KEY,
   identifierCode,
+  saveFile,
   setCloudMetadata,
 } from "@/app/[locale]/utils";
 import { createFolder, uploadFile } from "../../googleAPI";
@@ -15,6 +16,7 @@ import { useTranslations } from "next-intl";
 
 export default function NewBook({
   setSendNotification,
+  setRefreshLibrary,
 }: {
   setSendNotification: Function;
   setRefreshLibrary: Function;
@@ -35,7 +37,7 @@ export default function NewBook({
     if (!dataMap.books) dataMap.books = [];
     dataMap.books.push(book);
 
-    setCloudMetadata(dataMap).then();
+    setCloudMetadata(dataMap);
   };
 
   const createDataMapIfNotExists = async (
@@ -116,7 +118,7 @@ export default function NewBook({
           String(formData.get("tags")).split(","),
         );
 
-        const book: bookType = {
+        const bookTemplate: bookType = {
           id: bookId,
           bookCoverId: bookCoverId,
           title: String(formData.get("title")),
@@ -134,7 +136,7 @@ export default function NewBook({
           },
         };
 
-        addBookToDataMap(book);
+        addBookToDataMap(bookTemplate);
         form.reset();
         if (tagBox) tagBox.innerHTML = "";
 
@@ -143,6 +145,11 @@ export default function NewBook({
           content: "Uploading to user's google drive was a success.",
           author: "from upload system",
         });
+
+        saveFile(bookId, book);
+        saveFile(bookCoverId, bookCover);
+
+        setRefreshLibrary();
       } else {
         setSendNotification({
           title: "❌ Book was not uploaded!",

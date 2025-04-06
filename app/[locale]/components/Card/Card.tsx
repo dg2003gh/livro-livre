@@ -47,14 +47,13 @@ export default function Card({
   };
 
   useEffect(() => {
-    const getCover =
-      typeof window != "undefined" ? localStorage.getItem(coverId) : null;
+    const getCover = localStorage.getItem(coverId);
 
     if (!getCover) return setReload();
 
     setCover(getCover);
     setBackground(getCover);
-  }, [coverId, cover, reload]);
+  }, [coverId, reload]);
 
   return (
     <BaseView
@@ -78,7 +77,7 @@ export default function Card({
           {title.length > 25 ? title.slice(0, 25).concat("...") : title}
         </header>
         <hr className="w-full mb-2" />
-        {cover ? (
+        {cover || (cover && reload) ? (
           <Image
             src={cover}
             id={coverId}
