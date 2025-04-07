@@ -2,7 +2,11 @@
 import { useSession } from "next-auth/react";
 import { bookType, dataMapType, Orders, Visuals } from "../../types";
 import { useEffect, useState } from "react";
-import { getDataMapInCloud, saveBooks } from "@/app/[locale]/utils";
+import {
+  DATAMAP_KEY,
+  getDataMapInCloud,
+  saveBooks,
+} from "@/app/[locale]/utils";
 
 import Image from "next/image";
 import SignInGoogle from "../SignInGoogle/SignInGoogle";
@@ -16,7 +20,6 @@ import LastOpenedBook from "../LastOpenedBook/LastOpenedBook";
 
 export default function Library({
   refreshLibrary,
-  setRefreshLibrary,
   searchValue,
 }: {
   refreshLibrary: boolean;
@@ -28,7 +31,6 @@ export default function Library({
 
   const [visual, setVisual] = useState<Visuals>(Visuals.GRID);
   const [order, setOrder] = useState<Orders>(Orders.ASCENDENT);
-  const [books, setBooks] = useState<Array<bookType> | null>();
 
   const [tagFilter, setTagFilter] = useState<Array<string>>([]);
 
@@ -45,14 +47,6 @@ export default function Library({
     getDataMapInCloud();
     saveBooks();
   }, [session]);
-
-  useEffect(() => {
-    const dataMap = localStorage.getItem("dataMap");
-    if (!dataMap) return;
-
-    const books = JSON.parse(dataMap).books;
-    setBooks(books);
-  }, [refreshLibrary]);
 
   const AddBook = () => {
     return (
@@ -79,6 +73,11 @@ export default function Library({
 
   const GetBooks = () => {
     try {
+      const dataMap = localStorage.getItem(DATAMAP_KEY);
+      if (!dataMap) return;
+
+      const books = JSON.parse(dataMap).books;
+
       if (books == null || books.length <= 0) {
         // if there is no book
         return <AddBook />;

@@ -5,6 +5,7 @@ import { FormEvent, KeyboardEvent, useRef } from "react";
 import { RiDragDropLine, RiFunctionAddLine } from "react-icons/ri";
 import {
   DATAMAP_KEY,
+  getDataMapInCloud,
   identifierCode,
   saveFile,
   setCloudMetadata,
@@ -149,7 +150,9 @@ export default function NewBook({
         saveFile(bookId, book);
         saveFile(bookCoverId, bookCover);
 
-        setRefreshLibrary();
+        await getDataMapInCloud().then(() => {
+          setRefreshLibrary();
+        });
       } else {
         setSendNotification({
           title: "❌ Book was not uploaded!",

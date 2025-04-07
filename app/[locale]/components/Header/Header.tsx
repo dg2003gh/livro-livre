@@ -8,13 +8,14 @@ import {
 } from "react-icons/ri";
 import SignInGoogle from "../SignInGoogle/SignInGoogle";
 
-import { getDataMapInCloud } from "@/app/[locale]/utils";
+import { DATAMAP_KEY, getDataMapInCloud } from "@/app/[locale]/utils";
 import { useEffect, useRef } from "react";
 import Modal from "../Modal/Modal";
 import { useSession } from "next-auth/react";
 import ChangeLanguage from "../ChangeLanguage/ChangeLanguage";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { dataMapType } from "../../types";
 
 export default function Header({
   setSearchValue,
@@ -40,6 +41,11 @@ export default function Header({
     refreshButton.disabled = true;
 
     refreshButton.classList.add("animate-spin");
+
+    const prevDataMap: dataMapType = JSON.parse(
+      localStorage.getItem(DATAMAP_KEY) ?? "null",
+    );
+
     await getDataMapInCloud().then(() => {
       refreshButton.classList.remove("animate-spin");
       setSendNotification({
@@ -47,6 +53,20 @@ export default function Header({
         content: "Library is syncronized.",
         author: "from Library system",
       });
+
+      const dataMap: dataMapType = JSON.parse(
+        localStorage.getItem(DATAMAP_KEY) ?? "null",
+      );
+
+      if (prevDataMap && dataMap) {
+        prevDataMap.books.forEach((book) => {
+          if (!JSON.stringify(dataMap.books).includes(JSON.stringify(book))) {
+            localStorage.removeItem(book.id);
+            localStorage.removeItem(book.bookCoverId);
+          }
+        });
+      }
+
       setRefreshLibrary();
       refreshButton.disabled = false;
     });
