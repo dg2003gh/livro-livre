@@ -100,5 +100,195 @@
 
   "Notifications": {
     "LibraryRefreshed": {}
+  },
+
+  "TermsAndConditions": {
+    "title": "Términos y Condiciones",
+    "intro": "Estos términos y condiciones (“Acuerdo”) establecen los términos generales de su uso del sitio web <a href=\"https://livro-livre.finituz.com\" target=\"_blank\" rel=\"nofollow noreferrer noopener external\">livro-livre.finituz.com</a> (“Sitio web” o “Servicio”) y de cualquiera de sus productos y servicios relacionados (colectivamente, “Servicios”). Este Acuerdo es legalmente vinculante entre usted (“Usuario”, “usted” o “su”) y el operador de este Sitio web (“Operador”, “nosotros”, “nuestro” o “nos”). Si está celebrando este Acuerdo en nombre de una empresa u otra entidad legal, usted declara que tiene la autoridad para vincular a dicha entidad con este Acuerdo, en cuyo caso los términos “Usuario”, “usted” o “su” se referirán a dicha entidad. Si no tiene dicha autoridad, o si no está de acuerdo con los términos de este Acuerdo, no debe aceptar este Acuerdo y no podrá acceder ni usar el Sitio web ni los Servicios. Al acceder y usar el Sitio web y los Servicios, usted reconoce que ha leído, entendido y acepta estar vinculado por los términos de este Acuerdo. Usted reconoce que este Acuerdo es un contrato entre usted y el Operador, aunque sea electrónico y no esté firmado físicamente por usted, y regula su uso del Sitio web y los Servicios.",
+    "TableOfContents": {
+      "title": "Índice",
+      "accountsAndMembership": "Cuentas y Membresías",
+      "userContent": "Contenido del Usuario",
+      "backups": "Copias de seguridad",
+      "linksToOtherResources": "Enlaces a otros recursos",
+      "prohibitedUses": "Usos Prohibidos",
+      "intellectualPropertyRights": "Derechos de Propiedad Intelectual",
+      "indemnification": "Indemnización",
+      "severability": "Separabilidad",
+      "disputeResolution": "Resolución de Disputas",
+      "changesAndAmendments": "Cambios y Enmiendas",
+      "acceptanceOfTheseTerms": "Aceptación de estos términos",
+      "contactingUs": "Contacto con nosotros"
+    },
+    "AccountsAndMembership": {
+      "title": "Cuentas y Membresías",
+      "content": "Si crea una cuenta en el Sitio web, es responsable de mantener la seguridad de su cuenta y será completamente responsable de todas las actividades que ocurran bajo la cuenta y de cualquier otra acción tomada en relación con ella. Podemos, pero no estamos obligados a, monitorear y revisar las nuevas cuentas antes de que pueda iniciar sesión y comenzar a usar los Servicios. Proporcionar información de contacto falsa de cualquier tipo puede resultar en la terminación de su cuenta. Debe notificarnos inmediatamente sobre cualquier uso no autorizado de su cuenta o cualquier otra violación de seguridad. No seremos responsables por ningún acto u omisión de su parte, incluidos los daños de cualquier tipo incurridos como resultado de tales actos u omisiones."
+    },
+    "UserContent": {
+      "title": "Contenido del Usuario",
+      "content": "No poseemos ningún dato, información o material (colectivamente, “Contenido”) que usted envíe en el Sitio web en el curso del uso del Servicio. Usted será el único responsable de la exactitud, calidad, integridad, legalidad, confiabilidad, adecuación y propiedad intelectual o derecho de uso de todo el Contenido enviado. Podemos, pero no estamos obligados a, monitorear y revisar el Contenido en el Sitio web enviado o creado con nuestros Servicios por usted. Nos otorga permiso para acceder, copiar, distribuir, almacenar, transmitir, reformatear, mostrar y ejecutar el Contenido de su cuenta de usuario exclusivamente según lo requerido para proporcionar los Servicios a usted. A menos que lo permita específicamente, su uso del Sitio web y los Servicios no nos concede la licencia para usar, reproducir, adaptar, modificar, publicar o distribuir el Contenido creado por usted o almacenado en su cuenta de usuario para fines comerciales, de marketing o similares."
+    },
+    "Backups": {
+      "title": "Copias de seguridad",
+      "content": "No somos responsables del Contenido que se encuentre en el Sitio web. En ningún caso seremos responsables por la pérdida de ningún Contenido. Es su responsabilidad exclusiva mantener un respaldo adecuado de su Contenido. No obstante lo anterior, en algunas ocasiones y en ciertas circunstancias, sin ninguna obligación, podemos ser capaces de restaurar algunos o todos sus datos que hayan sido eliminados en una fecha y hora determinada, cuando hayamos realizado copias de seguridad de datos para nuestros propios fines. No garantizamos que los datos que necesita estarán disponibles."
+    },
+    "LinksToOtherResources": {
+      "title": "Enlaces a otros recursos",
+      "content": "Aunque el Sitio web y los Servicios puedan contener enlaces a otros recursos (como sitios web, aplicaciones móviles, etc.), no estamos, directa o indirectamente, sugiriendo ninguna aprobación, asociación, patrocinio, respaldo o afiliación con los recursos vinculados, a menos que se indique específicamente aquí. No somos responsables de examinar o evaluar, y no garantizamos las ofertas de, ninguna empresa o individuo o el contenido de sus recursos. No asumimos ninguna responsabilidad u obligación por las acciones, productos, servicios y contenidos de terceros. Debe revisar cuidadosamente las declaraciones legales y otras condiciones de uso de cualquier recurso que acceda a través de un enlace en el Sitio web. El vínculo con cualquier otro recurso externo es bajo su propio riesgo."
+    },
+    "ProhibitedUses": {
+      "title": "Usos Prohibidos",
+      "content": "Además de otros términos establecidos en el Acuerdo, se le prohíbe usar el Sitio web y los Servicios o Contenido: (a) para cualquier propósito ilegal; (b) para solicitar a otros realizar o participar en actos ilegales; (c) para violar cualquier regulación internacional, federal, provincial o estatal, reglas, leyes u ordenanzas locales; (d) para infringir o violar nuestros derechos de propiedad intelectual o los derechos de propiedad intelectual de otros; (e) para acosar, abusar, insultar, dañar, difamar, calumniar, menospreciar, intimidar o discriminar por género, orientación sexual, religión, etnia, raza, edad, origen nacional o discapacidad; (f) para enviar información falsa o engañosa; (g) para cargar o transmitir virus o cualquier otro tipo de código malicioso que pueda ser usado de cualquier manera que afecte la funcionalidad u operación del Sitio web y los Servicios, productos y servicios de terceros o de Internet; (h) para hacer spam, phishing, pharming, pretextos, rastreo o scraping; (i) para cualquier propósito obsceno o inmoral; o (j) para interferir o eludir las características de seguridad del Sitio web y los Servicios, productos y servicios de terceros o de Internet. Nos reservamos el derecho de terminar su uso del Sitio web y los Servicios por violar cualquiera de los usos prohibidos."
+    },
+    "IntellectualPropertyRights": {
+      "title": "Derechos de Propiedad Intelectual",
+      "content": "“Derechos de Propiedad Intelectual” significa todos los derechos presentes y futuros conferidos por estatuto, derecho común o equidad en relación con cualquier derecho de autor y derechos conexos, marcas registradas, diseños, patentes, invenciones, buena voluntad y el derecho a demandar por competencia desleal, derechos sobre invenciones, derechos de uso y todos los demás derechos de propiedad intelectual, ya sean registrados o no, incluyendo todas las aplicaciones y derechos para solicitar y ser concedido, derechos para reclamar prioridad de dichos derechos y todos los derechos o formas equivalentes de protección y cualquier otro resultado de actividad intelectual que exista o exista en el futuro en cualquier parte del mundo. Este Acuerdo no transfiere a usted ninguna propiedad intelectual del Operador o de terceros, y todos los derechos, títulos e intereses sobre dicha propiedad seguirán (entre las partes) exclusivamente con el Operador. Todas las marcas comerciales, marcas de servicio, gráficos y logotipos utilizados en relación con el Sitio web y los Servicios son marcas comerciales o marcas registradas del Operador o de sus licenciantes. Otras marcas comerciales, marcas de servicio, gráficos y logotipos utilizados en relación con el Sitio web y los Servicios pueden ser marcas de terceros. Su uso del Sitio web y los Servicios no le otorga ningún derecho o licencia para reproducir o usar de otra forma las marcas comerciales del Operador o de terceros."
+    },
+    "Indemnification": {
+      "title": "Indemnización",
+      "content": "Usted acepta indemnizar y eximir de responsabilidad al Operador y sus afiliados, directores, funcionarios, empleados, agentes, proveedores y licenciantes de cualquier responsabilidad, pérdida, daño o costo, incluidos los honorarios razonables de abogados, incurridos en conexión con o derivados de alegaciones, reclamaciones, acciones, disputas o demandas de terceros presentadas contra cualquiera de ellos como resultado o relacionado con su Contenido, su uso del Sitio web y los Servicios o cualquier conducta dolosa de su parte."
+    },
+    "Severability": {
+      "title": "Separabilidad",
+      "content": "Todos los derechos y restricciones contenidos en este Acuerdo pueden ser ejercidos y serán aplicables y vinculantes solo en la medida en que no violen ninguna ley aplicable y están destinados a ser limitados en la medida necesaria para que no hagan este Acuerdo ilegal, inválido o inaplicable. Si alguna disposición o parte de cualquier disposición de este Acuerdo se considera ilegal, inválida o inaplicable por un tribunal competente, es la intención de las partes que las disposiciones restantes o partes de ellas constituyan su acuerdo con respecto al tema tratado, y todas esas disposiciones restantes o partes de ellas permanecerán en pleno vigor y efecto."
+    },
+    "DisputeResolution": {
+      "title": "Resolución de Disputas",
+      "content": "La formación, interpretación y cumplimiento de este Acuerdo y cualquier disputa que surja de él se regirán por las leyes sustantivas y procesales de la Provincia de Minas Gerais, Brasil, sin tener en cuenta sus reglas sobre conflictos o elección de ley y, en la medida en que sea aplicable, las leyes de Brasil. La jurisdicción y el lugar exclusivos para acciones relacionadas con el tema de este Acuerdo serán los tribunales ubicados en Minas Gerais, Brasil, y por la presente usted se somete a la jurisdicción personal de dichos tribunales. Usted renuncia a cualquier derecho a juicio con jurado en cualquier procedimiento derivado o relacionado con este Acuerdo. La Convención de las Naciones Unidas sobre Contratos de Compraventa Internacional de Mercaderías no se aplica a este Acuerdo."
+    },
+    "ChangesAndAmendments": {
+      "title": "Cambios y Enmiendas",
+      "content": "Nos reservamos el derecho de modificar este Acuerdo o sus términos relacionados con el Sitio web y los Servicios en cualquier momento a nuestra discreción. Cuando lo hagamos, revisaremos la fecha de actualización en la parte inferior de esta página y publicaremos una notificación en la página principal del Sitio web. También podemos notificarle de otras maneras, a nuestra discreción, como mediante la información de contacto que usted nos ha proporcionado."
+    },
+    "AcceptanceOfTheseTerms": {
+      "title": "Aceptación de estos Términos",
+      "content": "Usted reconoce que ha leído este Acuerdo y acepta todos sus términos y condiciones. Al acceder y usar el Sitio web y los Servicios, usted acepta estar vinculado por este Acuerdo. Si no está de acuerdo con los términos de este Acuerdo, no está autorizado a acceder ni usar el Sitio web ni los Servicios."
+    },
+    "ContactingUs": {
+      "title": "Contacto con nosotros",
+      "content": "Si tiene alguna pregunta, preocupación o queja con respecto a este Acuerdo, lo invitamos a ponerse en contacto con nosotros utilizando los siguientes detalles:"
+    },
+    "LastUpdated": "Este documento fue actualizado por última vez el 7 de abril de 2025"
+  },
+
+  "PrivacyPolicy": {
+    "title": "Política de Privacidad",
+    "lastUpdated": "Este documento fue actualizado por última vez el 7 de abril de 2025",
+    "intro": "Esta Política de Privacidad describe nuestras políticas y procedimientos sobre la recopilación, uso y divulgación de su información cuando utiliza el Servicio y le informa sobre sus derechos de privacidad y cómo la ley lo protege.",
+    "intro2": "Utilizamos sus datos personales para proporcionar y mejorar el Servicio. Al utilizar el Servicio, usted acepta la recopilación y el uso de información de acuerdo con esta Política de Privacidad. Esta Política de Privacidad fue creada con la ayuda del <a href=\"https://www.termsfeed.com/privacy-policy-generator/\" target=\"_blank\">Generador de Políticas de Privacidad</a>.",
+    "InterpretationAndDefinitions": {
+      "title": "Interpretación y Definiciones",
+      "Interpretation": {
+        "title": "Interpretación",
+        "content": "Las palabras cuya primera letra está en mayúscula tienen significados definidos bajo las siguientes condiciones. Las siguientes definiciones tendrán el mismo significado, independientemente de que estén en singular o plural."
+      },
+      "Definitions": {
+        "title": "Definiciones",
+        "content": "Para los fines de esta Política de Privacidad:",
+        "items": {
+          "Account": "significa una cuenta única creada para acceder a nuestro Servicio o partes de nuestro Servicio.",
+          "Affiliate": "significa una entidad que controla, es controlada por o está bajo control común con una parte, donde 'control' significa la posesión del 50% o más de las acciones, intereses accionarios o títulos con derecho a voto para la elección de directores o otra autoridad administrativa.",
+          "Company": "se refiere a Libro Libre.",
+          "Cookies": "son pequeños archivos que se colocan en su computadora, dispositivo móvil o cualquier otro dispositivo por un sitio web, que contienen detalles sobre su historial de navegación en ese sitio, entre otros usos.",
+          "Country": "se refiere a: Argentina",
+          "Device": "significa cualquier dispositivo que pueda acceder al Servicio, como una computadora, teléfono móvil o tablet.",
+          "PersonalData": "es cualquier información relacionada con una persona identificada o identificable.",
+          "Service": "se refiere al sitio web.",
+          "ServiceProvider": "significa cualquier persona física o jurídica que procese los datos en nombre de la Empresa. Se refiere a empresas o individuos subcontratados por la Empresa para facilitar el Servicio, ofrecer el Servicio en nombre de la Empresa, realizar servicios relacionados con el Servicio o ayudar a la Empresa a analizar cómo se usa el Servicio.",
+          "UsageData": "se refiere a los datos recopilados automáticamente, generados por el uso del Servicio o por la infraestructura del Servicio (por ejemplo, la duración de la visita a una página).",
+          "Website": "se refiere a Libro Libre, accesible en https://livro-livre.finituz.com",
+          "You": "significa la persona que accede o usa el Servicio, o la empresa o entidad legal en nombre de la cual dicha persona está accediendo o usando el Servicio, según corresponda."
+        }
+      }
+    },
+
+    "CollectingAndUsingData": {
+      "title": "Recopilación y Uso de Sus Datos Personales",
+      "TypesOfData": {
+        "title": "Tipos de Datos Recopilados",
+        "PersonalData": {
+          "title": "Datos Personales",
+          "content": "Al utilizar nuestro Servicio, podemos solicitarle que nos proporcione cierta información personalmente identificable que puede ser utilizada para contactarlo o identificarlo. La información personalmente identificable puede incluir, pero no se limita a:",
+          "items": {
+            "EmailAddress": "Dirección de correo electrónico",
+            "Name": "Nombre y apellido",
+            "UsageData": "Datos de uso"
+          }
+        },
+        "UsageData": {
+          "title": "Datos de Uso",
+          "content": "Los datos de uso se recopilan automáticamente al usar el Servicio.",
+          "details": {
+            "Detail1": "Los datos de uso pueden incluir información como la dirección IP de su dispositivo (por ejemplo, dirección IP), tipo de navegador, versión del navegador, las páginas de nuestro Servicio que visita, la hora y la fecha de su visita, el tiempo que pasa en esas páginas, identificadores únicos de dispositivos y otros datos diagnósticos.",
+            "Detail2": "Cuando accede al Servicio a través de un dispositivo móvil, podemos recopilar automáticamente cierta información, incluyendo, pero no limitándose a, el tipo de dispositivo móvil que usa, el ID único de su dispositivo móvil, la dirección IP de su dispositivo móvil, el sistema operativo de su dispositivo móvil, el tipo de navegador móvil que usa, identificadores únicos de dispositivos y otros datos diagnósticos.",
+            "Detail3": "También podemos recopilar información que su navegador envía siempre que visita nuestro Servicio o cuando accede al Servicio a través de un dispositivo móvil."
+          }
+        },
+        "TrackingTechnologies": {
+          "title": "Tecnologías de Seguimiento y Cookies",
+          "content": "Usamos cookies y tecnologías de seguimiento similares para rastrear la actividad en nuestro Servicio y almacenar cierta información. Las tecnologías de seguimiento que utilizamos incluyen balizas, etiquetas y scripts para recopilar y rastrear información, mejorar y analizar nuestro Servicio. Las tecnologías que usamos pueden incluir:",
+          "items": {
+            "Cookies": {
+              "title": "Cookies o Cookies de Navegador",
+              "content": "Una cookie es un pequeño archivo colocado en su dispositivo. Puede configurar su navegador para rechazar todas las cookies o para indicar cuándo se envía una cookie. Sin embargo, si no acepta las cookies, es posible que no pueda usar algunas partes de nuestro Servicio. A menos que haya ajustado la configuración de su navegador para rechazar cookies, nuestro Servicio puede usar cookies."
+            },
+            "WebBeacons": {
+              "title": "Web Beacons",
+              "content": "Ciertas secciones de nuestro Servicio y nuestros correos electrónicos pueden contener pequeños archivos electrónicos conocidos como web beacons (también llamados gifs transparentes, etiquetas de píxel y gifs de píxel único) que permiten a la Empresa, por ejemplo, contar a los usuarios que visitaron esas páginas o abrieron un correo electrónico y realizar otras estadísticas relacionadas con el sitio (por ejemplo, registrar la popularidad de una sección específica y verificar la integridad del sistema y el servidor)."
+            }
+          },
+          "cookieTypes": {
+            "PersistentSession": "Las cookies pueden ser \"Persistentes\" o de \"Sesión\". Las cookies persistentes permanecen en su computadora personal o dispositivo móvil cuando está desconectado, mientras que las cookies de sesión se eliminan cuando cierra el navegador. Puede aprender más sobre las cookies en el artículo de <a href=\"https://www.termsfeed.com/blog/cookies/#What_Are_Cookies\" target=\"_blank\">TermsFeed</a>.",
+            "usage": "Usamos tanto cookies de sesión como cookies persistentes para los siguientes fines:",
+            "types": {
+              "Necessary": {
+                "title": "Cookies Necesarias / Esenciales",
+                "type": "Cookies de Sesión",
+                "administered": "Nosotros",
+                "purpose": "Estas cookies son esenciales para proporcionarle los servicios disponibles a través del sitio y permitirle utilizar algunas de sus funcionalidades. Ayudan a autenticar a los usuarios e impiden el uso fraudulento de cuentas de usuario. Sin estas cookies, los servicios que ha solicitado no pueden ser proporcionados, y usamos estas cookies solo para proporcionar esos servicios."
+              },
+              "Acceptance": {
+                "title": "Cookies de Política / Aceptación de Aviso",
+                "type": "Cookies Persistentes",
+                "administered": "Nosotros",
+                "purpose": "Estas cookies identifican si los usuarios han aceptado el uso de cookies en el sitio."
+              },
+              "Functionality": {
+                "title": "Cookies de Funcionalidad",
+                "type": "Cookies Persistentes",
+                "administered": "Nosotros",
+                "purpose": "Estas cookies nos permiten recordar las elecciones que hace cuando usa el sitio, como recordar sus datos de inicio de sesión o preferencias de idioma. El objetivo de estas cookies es proporcionar una experiencia más personalizada y evitar que tenga que ingresar sus preferencias nuevamente cada vez que use el sitio."
+              }
+            }
+          }
+        },
+        "moreInfo": "Para más información sobre las cookies que usamos y sus opciones con respecto a las cookies, por favor visite nuestra Política de Cookies o la sección de Cookies de nuestra Política de Privacidad."
+      }
+    },
+    "UseOfData": {
+      "title": "Uso de Sus Datos Personales",
+      "content": "La Empresa puede utilizar los Datos Personales para los siguientes fines:",
+      "items": {
+        "ProvideService": "Para proporcionar y mantener nuestro Servicio, incluyendo monitorear el uso de nuestro Servicio.",
+        "ManageAccount": "Para gestionar su Cuenta: para gestionar su registro como usuario del Servicio. Los Datos Personales que proporcione pueden otorgarle acceso a diferentes funcionalidades del Servicio disponibles para usted como usuario registrado.",
+        "Performance": "Para el cumplimiento de un contrato: el desarrollo, cumplimiento y ejecución del contrato de compra de productos, artículos o servicios que haya adquirido o de cualquier otro contrato con nosotros a través del Servicio.",
+        "Contact": "Para ponernos en contacto con usted: Para comunicarnos con usted por correo electrónico, llamadas telefónicas, SMS o otras formas equivalentes de comunicación electrónica, como notificaciones push de aplicaciones móviles sobre actualizaciones o comunicaciones informativas relacionadas con las funcionalidades, productos o servicios contratados, incluidas las actualizaciones de seguridad, cuando sea necesario o razonable para su implementación.",
+        "News": "Para proporcionarle noticias, ofertas especiales e información general sobre otros bienes, servicios y eventos que ofrecemos que son similares a los que ya ha comprado o preguntado, a menos que haya optado por no recibir dicha información.",
+        "Requests": "Para gestionar sus solicitudes: Para atender y gestionar sus solicitudes.",
+        "BusinessTransfers": "Para transferencias comerciales: Podemos usar su información para evaluar o llevar a cabo una fusión, desinversión, reestructuración, reorganización, disolución u otra venta o transferencia de parte o de la totalidad de nuestros activos, ya sea como una operación continua o como parte de un proceso de quiebra, liquidación o proceso similar, en el cual los Datos Personales mantenidos por la Empresa sobre los usuarios de nuestro Servicio sean transferidos.",
+        "OtherPurposes": "Para otros fines: Podemos usar su información para otros fines, como el análisis de datos, identificar tendencias de uso, determinar la efectividad de nuestras campañas promocionales y evaluar y mejorar nuestro Servicio, productos, servicios, marketing y su experiencia."
+      },
+      "sharing": {
+        "title": "Podemos compartir su información personal en las siguientes situaciones:",
+        "items": {
+          "ServiceProviders": "Con proveedores de servicios: Podemos compartir su información personal con proveedores de servicios para monitorear y analizar el uso de nuestro Servicio, o para ponernos en contacto con usted.",
+          "BusinessTransfers": "Para transferencias comerciales: Podemos compartir o transferir su información personal en relación con, o durante negociaciones de, cualquier fusión, venta de activos de la Empresa, financiación o adquisición de parte o la totalidad de nuestros negocios por otra empresa.",
+          "Affiliates": "Con afiliados: Podemos compartir su información con nuestros afiliados, en cuyo caso exigiremos que estos afiliados respeten esta Política de Privacidad. Los afiliados incluyen nuestra empresa matriz y otras subsidiarias, socios de joint venture o empresas que controlamos o que están bajo control común con nosotros.",
+          "BusinessPartners": "Con socios comerciales: Podemos compartir su información con nuestros socios comerciales para ofrecerle ciertos productos, servicios o promociones.",
+          "OtherUsers": "Con otros usuarios: cuando comparte información personal o interactúa en áreas públicas con otros usuarios, esa información puede ser vista por todos los usuarios y distribuida públicamente.",
+          "Consent": "Con su consentimiento: Podemos divulgar su información personal para cualquier otro propósito con su consentimiento."
+        }
+      }
+    }
   }
 }

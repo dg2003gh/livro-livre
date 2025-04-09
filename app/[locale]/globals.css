@@ -29,3 +29,7 @@ body {
   color: white;
   opacity: 0.5;
 }
+
+.link a {
+  color: var(--color-blue-400);
+}

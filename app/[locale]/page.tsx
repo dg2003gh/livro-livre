@@ -6,6 +6,8 @@ import Library from "./components/Library/Library";
 import Notification from "./components/Notification/Notification";
 import { useState } from "react";
 import { useReload } from "./utils";
+import TermsAndConditions from "./components/TermsAndConditions/ TermsAndConditions";
+import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 
 export default function Home() {
   const [sendNotification, setSendNotification] = useState<{
@@ -35,6 +37,10 @@ export default function Home() {
           setSendNotification={setSendNotification}
         />
       </main>
+      <div className="fixed flex flex-col bottom-10 z-11 left-12">
+        <TermsAndConditions />
+        <PrivacyPolicy />
+      </div>
       <footer className="fixed z-10 bottom-5 bg-[rgba(0,0,0,0.5)] backdrop-blur-md p-10 w-[95vw] flex self-end gap-6 flex-wrap items-center justify-center border rounded-2xl left-1/2 transform -translate-x-1/2">
         <b className="absolute bottom-2 left-4 text-sm opacity-60 ">
           {process.env.APP_VERSION}
