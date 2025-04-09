@@ -18,6 +18,12 @@ export default function SignInGoogle() {
     buttonRef.current.style.backgroundImage = `url(${session.user.image})`;
   }, [session?.user]);
 
+  const onSignOut = () => {
+    localStorage.clear();
+
+    signOut({ redirect: false });
+  };
+
   if (session && session.user?.image) {
     return (
       <DropDown
@@ -34,7 +40,7 @@ export default function SignInGoogle() {
         <li
           className="hover:text-red-500 text-nowrap"
           title={t("title::signOut")}
-          onClick={() => signOut({ redirect: false })}
+          onClick={onSignOut}
         >
           {t("title::signOut")}
         </li>
