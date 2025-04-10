@@ -31,15 +31,17 @@ export default function PdfJs({
   const bookIndex = dataMap.books.findIndex((book) => book.id == bookId);
   const storageScale = dataMap.books[bookIndex]?.userPrefs.scale;
 
+  var scales = { 1: 3.2, 2: 4 },
+    defaultScale = 3,
+    scale1 = scales[window.devicePixelRatio as any] || defaultScale;
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
   const [pdfDoc, setPdfDoc] = useState<PDFDocumentProxy>();
   const [currentPage, setCurrentPage] = useState(
     dataMap.books[bookIndex].userPrefs.lastViewedPage,
   );
-  const [scale, setScale] = useState<number>(
-    isMobile() ? storageScale - 0.1 : storageScale,
-  );
+  const [scale, setScale] = useState<number>(storageScale);
 
   const theme: themeType = dataMap.books[bookIndex]?.userPrefs.theme;
   const [color, setColor] = useState<themeType>(theme);
@@ -61,7 +63,7 @@ export default function PdfJs({
         .then((page) => {
           // Set the viewport
 
-          const viewport = page.getViewport({ scale: scale });
+          const viewport = page.getViewport({ scale: scale1 });
           canvas.style.width = `${viewport.width}px`;
           canvas.style.height = `${viewport.height}px`;
 
