@@ -38,7 +38,7 @@ export default function PdfJs({
     dataMap.books[bookIndex].userPrefs.lastViewedPage,
   );
   const [scale, setScale] = useState<number>(
-    isMobile() ? storageScale - 0.2 : storageScale,
+    isMobile() ? storageScale - 0.1 : storageScale,
   );
 
   const theme: themeType = dataMap.books[bookIndex]?.userPrefs.theme;
