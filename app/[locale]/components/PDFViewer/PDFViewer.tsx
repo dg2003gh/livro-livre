@@ -33,7 +33,8 @@ export default function PdfJs({
 
   var scales = { 1: 3.2, 2: 4 },
     defaultScale = 3,
-    scale1 = scales[window.devicePixelRatio as any] || defaultScale;
+    scale1 =
+      scales[window.devicePixelRatio as keyof typeof scales] || defaultScale;
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
