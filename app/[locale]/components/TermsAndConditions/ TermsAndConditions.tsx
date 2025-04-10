@@ -9,11 +9,10 @@ export default function TermsAndConditions() {
   return (
     <>
       <button ref={termsButtonRef}>
-        <a>{"Terms & conditions"}</a>
+        <a>{t("title")}</a>
       </button>
-      <Modal openButtonRef={termsButtonRef}>
-        <div className="p-8 space-y-5 link">
-          <h1 className="text-3xl font-semibold">{t("title")}</h1>
+      <Modal title={t("title")} openButtonRef={termsButtonRef}>
+        <div className="md:p-8 space-y-5 link">
           <p className="text-lg">
             <span
               dangerouslySetInnerHTML={{

@@ -32,7 +32,7 @@ export default function Notification({
   return (
     <div
       ref={notificationRef}
-      className="fixed z-14 right-5 bottom-52 transform translate-x-96 break-words p-2 bg-[rgba(0,0,0,0.5)] backdrop-blur-md rounded-xl w-1/3 md:w-1/5 h-fit transition-all duration-500 ease-in-out"
+      className="fixed z-14 right-5 bottom-52 transform translate-x-96 break-words p-2 bg-main rounded-xl w-1/3 md:w-1/5 h-fit transition-all duration-500 ease-in-out"
     >
       <header className="flex flex-col gap-2 mb-2">
         <b> {title} </b>

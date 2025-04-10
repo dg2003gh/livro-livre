@@ -9,11 +9,10 @@ export default function PrivacyPolicy() {
   return (
     <>
       <button ref={privacyButtonRef}>
-        <a>Privacy policy</a>
+        <a>{t("title")}</a>
       </button>
-      <Modal openButtonRef={privacyButtonRef}>
-        <div className="space-y-8">
-          <h1 className="text-4xl font-semibold">{t("title")}</h1>
+      <Modal title={t("title")} openButtonRef={privacyButtonRef}>
+        <div className="space-y-5 md:p-8 link">
           <section className="space-y-4">
             <p>{t("intro")}</p>
             <p
