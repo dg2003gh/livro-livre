@@ -55,17 +55,19 @@ export default function PdfJs({
     (pageNum: number, pdf = pdfDoc) => {
       const canvas = canvasRef.current;
       if (!canvas || !pdf) return;
-      canvas.height = 0;
-      canvas.width = 0;
-      // canvas.hidden = true;
+
       pdf
         .getPage(pageNum)
         .then((page) => {
           // Set the viewport
 
           const viewport = page.getViewport({ scale: scale });
-          canvas.height = viewport.height;
-          canvas.width = viewport.width;
+          canvas.style.width = `${viewport.width}px`;
+          canvas.style.height = `${viewport.height}px`;
+
+          canvas.width = viewport.width * window.devicePixelRatio;
+          canvas.height = viewport.height * window.devicePixelRatio;
+
           const ctx = canvas.getContext("2d");
 
           if (!ctx) return;
