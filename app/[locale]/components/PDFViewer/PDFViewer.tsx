@@ -11,7 +11,7 @@ import { dataMapType, themeType, Tools } from "../../types";
 
 import AnnotationDock from "../AnnotationDock/AnnotationDock";
 import AnnotationCanvas from "../AnnotationCanvas/AnnotationCanvas";
-import { rgbToHex } from "../../utils";
+import { isMobile, rgbToHex } from "../../utils";
 
 export default function PdfJs({
   src,
@@ -29,6 +29,7 @@ export default function PdfJs({
     : null;
 
   const bookIndex = dataMap.books.findIndex((book) => book.id == bookId);
+  const storageScale = dataMap.books[bookIndex]?.userPrefs.scale;
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
@@ -37,8 +38,9 @@ export default function PdfJs({
     dataMap.books[bookIndex].userPrefs.lastViewedPage,
   );
   const [scale, setScale] = useState<number>(
-    dataMap.books[bookIndex]?.userPrefs.scale,
+    isMobile() ? storageScale - 0.1 : storageScale,
   );
+
   const theme: themeType = dataMap.books[bookIndex]?.userPrefs.theme;
   const [color, setColor] = useState<themeType>(theme);
   const [tool, setTool] = useState<Tools>(Tools.PENCIL);
@@ -124,7 +126,7 @@ export default function PdfJs({
       className="py-24 relative flex flex-col w-full h-full items-center justify-center"
     >
       <div className="overflow-scroll">
-        <canvas ref={canvasRef} className="px-16 md:p-0"></canvas>
+        <canvas ref={canvasRef} className="md:p-0"></canvas>
         <AnnotationCanvas
           color={color}
           mouseDown={mouseDown}

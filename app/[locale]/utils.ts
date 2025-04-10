@@ -2,6 +2,9 @@ import { useCallback, useEffect, useState } from "react";
 import { downloadFile, findFileId, updateFile, uploadFile } from "./googleAPI";
 import { bookType, dataMapType } from "./types";
 
+export const isMobile = () =>
+  window.innerWidth <= 800 && window.innerHeight <= 600;
+
 export const identifierCode: string =
   "Eu amo livro livre porque me faz sentir como uma barbuleta, so";
 export const DATAMAP_KEY = "dataMap";
