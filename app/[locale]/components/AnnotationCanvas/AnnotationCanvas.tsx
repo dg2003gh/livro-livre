@@ -183,7 +183,7 @@ export default function AnnotationCanvas({
         onMouseMove={handler}
         onTouchMove={touchHandler}
         onResize={handlerResizeWindow}
-        className="absolute z-2 top-[0px] left-[0px] bottom-[0px] right-[0px] w-full h-full"
+        className="absolute touch-manipulation z-2 top-[0px] left-[0px] bottom-[0px] right-[0px] w-full h-full"
         width={window.innerWidth}
         height={window.innerHeight}
         ref={annotationCanvasRef}
