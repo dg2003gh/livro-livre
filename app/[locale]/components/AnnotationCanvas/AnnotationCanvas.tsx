@@ -45,10 +45,9 @@ export default function AnnotationCanvas({
   const snapshot = useRef<ImageData | null>(null);
   const annotationCanvasRef = useRef<HTMLCanvasElement>(null);
 
-  const getCanvas = () => annotationCanvasRef.current;
+  const canvas = annotationCanvasRef.current;
 
   const computePointInCanvas = (clientX: number, clientY: number) => {
-    const canvas = getCanvas();
     if (!canvas) return { x: clientX, y: clientY };
 
     const rect = canvas.getBoundingClientRect();
@@ -108,7 +107,6 @@ export default function AnnotationCanvas({
   };
 
   const handlerMouseDown = (e: MouseEvent | TouchEvent) => {
-    const canvas = getCanvas();
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx) return;
 
@@ -127,7 +125,6 @@ export default function AnnotationCanvas({
   };
 
   const handlerMouseUp = () => {
-    const canvas = getCanvas();
     if (!canvas) return;
 
     saveAnnotationPage(bookIndex, currentPage, canvas);
@@ -136,7 +133,6 @@ export default function AnnotationCanvas({
   };
 
   const handlerMove = (e: MouseEvent | TouchEvent) => {
-    const canvas = getCanvas();
     const ctx = canvas?.getContext("2d");
 
     if (!ctx || !mouseDown || !showAnnotation || !snapshot.current) return;
@@ -152,7 +148,6 @@ export default function AnnotationCanvas({
   };
 
   const redraw = () => {
-    const canvas = getCanvas();
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx) return;
     clearCanvas(canvas, ctx);
@@ -160,7 +155,6 @@ export default function AnnotationCanvas({
   };
 
   useEffect(() => {
-    const canvas = getCanvas();
     if (!canvas) return;
 
     const resizeCanvas = () => {
@@ -174,13 +168,9 @@ export default function AnnotationCanvas({
     return () => window.removeEventListener("resize", resizeCanvas);
   }, []);
 
-  useEffect(() => {
-    if (snapshot.current) return;
-    redraw();
-  });
+  useEffect(redraw, [currentPage]);
 
   useEffect(() => {
-    const canvas = getCanvas();
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx || tool !== Tools.CLEAR_CANVAS) return;
 
@@ -189,7 +179,6 @@ export default function AnnotationCanvas({
   }, [tool]);
 
   useEffect(() => {
-    const canvas = getCanvas();
     if (!canvas) return;
 
     const preventScroll = (e: Event) => {
