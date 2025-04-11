@@ -16,7 +16,7 @@ export default function Dock({
   bookIndex,
   currentPage,
   pdfDoc,
-  setScale,
+  setZoom,
   setCurrentPage,
   theme,
   setShowAnnotation,
@@ -24,7 +24,7 @@ export default function Dock({
   bookIndex: number;
   currentPage: number;
   pdfDoc: PDFDocumentProxy;
-  setScale: Function;
+  setZoom: Function;
   setCurrentPage: Function;
   theme: themeType;
   setShowAnnotation: Function;
@@ -99,7 +99,7 @@ export default function Dock({
   const changeScale = (event: MouseEvent<HTMLLIElement>) => {
     const scale: string = event.currentTarget.innerText;
 
-    setScale(Number(scale));
+    setZoom(Number(scale));
     dataMap.books[bookIndex].userPrefs.scale = scale;
 
     scaleMark();

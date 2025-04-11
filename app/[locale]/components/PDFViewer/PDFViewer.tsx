@@ -36,7 +36,7 @@ export default function PdfJs({
   const [currentPage, setCurrentPage] = useState(
     dataMap.books[bookIndex].userPrefs.lastViewedPage,
   );
-  const [scale, setScale] = useState<number>(storageScale);
+  const [zoom, setZoom] = useState<number>(storageScale);
   const theme: themeType = dataMap.books[bookIndex]?.userPrefs.theme;
 
   const [color, setColor] = useState<themeType>(theme);
@@ -49,8 +49,11 @@ export default function PdfJs({
   const renderPage = useCallback(
     (pageNum: number, pdf = pdfDoc) => {
       const canvas = canvasRef.current;
+
       if (!canvas || !pdf) return;
-      let scales = { 1: 3.2, 2: 4 },
+
+      canvas.style.transform = `scale(${zoom})`;
+      const scales = { 1: 3.2, 2: 4 },
         defaultScale = 3,
         scale =
           scales[window.devicePixelRatio as keyof typeof scales] ||
@@ -88,7 +91,7 @@ export default function PdfJs({
         } catch (error) {}
       });
     },
-    [pdfDoc, theme, scale],
+    [pdfDoc, theme, zoom],
   );
 
   useEffect(() => {
@@ -122,7 +125,7 @@ export default function PdfJs({
         </div>
       </div>
       <Dock
-        setScale={setScale}
+        setZoom={setZoom}
         setCurrentPage={setCurrentPage}
         theme={theme}
         currentPage={currentPage}
