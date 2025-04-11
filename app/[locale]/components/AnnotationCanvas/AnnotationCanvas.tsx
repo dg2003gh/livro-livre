@@ -1,5 +1,11 @@
 "use client";
-import { ReactElement, useEffect, useRef } from "react";
+import {
+  type MouseEvent,
+  ReactElement,
+  TouchEvent,
+  useEffect,
+  useRef,
+} from "react";
 import { Tools, themeType } from "../../types";
 
 import { rgbToHex } from "../../utils";
@@ -119,7 +125,7 @@ export default function AnnotationCanvas({
     canvas.height = window.innerHeight;
   };
 
-  const touchHandler = (e: TouchEventInit) => {
+  const touchHandler = (e: TouchEvent) => {
     if (!e.touches) return;
 
     var touch = e.touches[0];
@@ -130,9 +136,7 @@ export default function AnnotationCanvas({
     canvas?.dispatchEvent(mouseEvent);
   };
 
-  const handler = (e: any) => {
-    e.preventDefault();
-
+  const handler = (e: MouseEvent) => {
     const ctx = canvas?.getContext("2d");
     if (!ctx || !mouseDown || !showAnnotation || !snapshot.current) return;
 
@@ -165,12 +169,7 @@ export default function AnnotationCanvas({
   useEffect(() => {
     if (snapshot.current) return;
 
-    canvas?.addEventListener("touchmove", touchHandler);
     redraw();
-
-    return () => {
-      canvas?.removeEventListener("touchmove", touchHandler);
-    };
   });
 
   return (
@@ -182,7 +181,7 @@ export default function AnnotationCanvas({
         onMouseUp={handlerMouseUp}
         onTouchEnd={handlerMouseUp}
         onMouseMove={handler}
-        onTouchMove={handler}
+        onTouchMove={touchHandler}
         onResize={handlerResizeWindow}
         className="absolute z-2 top-[0px] left-[0px] bottom-[0px] right-[0px] w-full h-full"
         width={window.innerWidth}
