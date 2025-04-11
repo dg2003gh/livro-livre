@@ -54,7 +54,7 @@ export default function PdfJs({
 
       canvas.style.transform = `scale(${zoom})`;
       const scales = { 1: 3.2, 2: 4 },
-        defaultScale = 3,
+        defaultScale = 1.5,
         scale =
           scales[window.devicePixelRatio as keyof typeof scales] ||
           defaultScale;
