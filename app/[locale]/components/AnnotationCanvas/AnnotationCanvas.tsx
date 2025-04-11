@@ -212,7 +212,7 @@ export default function AnnotationCanvas({
       onTouchStart={handlerMouseDown}
       onTouchEnd={handlerMouseUp}
       onTouchMove={handlerMove}
-      className="absolute z-50 top-0 left-0 w-full h-full touch-none"
+      className="absolute z-10 top-0 left-0 w-full h-full touch-none"
     />
   );
 }
