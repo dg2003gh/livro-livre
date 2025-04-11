@@ -50,9 +50,16 @@ export default function PdfJs({
     (pageNum: number, pdf = pdfDoc) => {
       const canvas = canvasRef.current;
       if (!canvas || !pdf) return;
+      let scales = { 1: 3.2, 2: 4 },
+        defaultScale = 3,
+        scale =
+          scales[window.devicePixelRatio as keyof typeof scales] ||
+          defaultScale;
 
       pdf.getPage(pageNum).then((page) => {
-        const viewport = page.getViewport({ scale });
+        const viewport = page.getViewport({
+          scale,
+        });
 
         canvas.width = viewport.width;
         canvas.height = viewport.height;

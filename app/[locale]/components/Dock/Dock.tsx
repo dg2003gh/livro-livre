@@ -109,9 +109,21 @@ export default function Dock({
     document.location.reload();
   };
 
+  const changePage = (e: any) => {
+    const touch = e.touches[0].clientX;
+
+    touch > 0 ? nextPage() : prevPage();
+  };
+
   useEffect(() => {
+    window.addEventListener("touchmove", changePage);
+
     changeButtonTheme();
     scaleMark();
+
+    return () => {
+      window.removeEventListener("touchmove", changePage);
+    };
   }, [changeButtonTheme, scaleMark, theme]);
 
   return (
