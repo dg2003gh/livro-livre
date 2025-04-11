@@ -153,6 +153,7 @@ export default function Dock({
           >
             <span ref={scaleListRef}>
               <li onClick={changeScale}>0.8</li>
+              <li onClick={changeScale}>0.9</li>
               <li onClick={changeScale}>1.0</li>
               <li onClick={changeScale}>1.2</li>
               <li onClick={changeScale}>1.3</li>
