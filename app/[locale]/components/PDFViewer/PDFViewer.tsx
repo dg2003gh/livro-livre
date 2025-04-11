@@ -111,7 +111,7 @@ export default function PdfJs({
       className="relative flex flex-col w-full h-full items-center justify-center py-20 sm:py-10 bg-white"
     >
       <div className="w-full">
-        <div className="w-screen h-screen md:h-fit touch-manipulation">
+        <div className="w-screen h-screen overflow-scroll md:h-fit touch-manipulation">
           <canvas ref={canvasRef} className="w-full h-full" />
           <AnnotationCanvas
             color={color}
