@@ -150,9 +150,7 @@ export default function NewBook({
         saveFile(bookId, book);
         saveFile(bookCoverId, bookCover);
 
-        await getDataMapInCloud().then(() => {
-          setRefreshLibrary();
-        });
+        await getDataMapInCloud(setRefreshLibrary);
       } else {
         setSendNotification({
           title: "❌ Book was not uploaded!",

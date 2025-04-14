@@ -1,16 +1,3 @@
-import NextAuth from "next-auth";
-import { Session } from "next-auth";
-
-declare module "next-auth" {
-  interface Session {
-    accessToken?: string;
-  }
-
-  interface JWT {
-    accessToken?: string;
-  }
-}
-
 export const themeColors = {
   black: { r: 0, g: 0, b: 0 },
   white: { r: 255, g: 255, b: 255 },

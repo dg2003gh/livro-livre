@@ -148,52 +148,92 @@ export const useMousePosition = () => {
   return mousePosition;
 };
 
-export const getDataMapInCloud = async () => {
+export const getDataMapInCloud = async (setRefreshLibrary: Function) => {
   const findMetadataQuery = `name = 'metadata.json' and fullText contains '${identifierCode}'`;
   const fileId = await findFileId(findMetadataQuery);
 
-  const metadata = downloadFile(fileId);
-
-  try {
-    metadata.then(async (res) => {
+  return downloadFile(fileId).then(async (res) => {
+    try {
       if (!res) return;
 
-      const metadataBody: string = await res.text();
+      await res.text().then((body) => {
+        localStorage.setItem(DATAMAP_KEY, String(body));
+        setRefreshLibrary();
+      });
 
-      localStorage.setItem(DATAMAP_KEY, metadataBody);
-    });
-  } catch (e) {
-    console.log(e);
-  }
+      return res;
+    } catch (e) {
+      console.log(e);
+    }
+  });
 };
 
-export const saveBooks = () => {
+export const downloadTime = async (response: Response): Promise<Blob> => {
+  const contentLength = response.headers.get("content-length");
+  const total = contentLength ? parseInt(contentLength) : 0;
+  const reader = response.body?.getReader();
+  const chunks: Uint8Array[] = [];
+  let loaded = 0;
+
+  if (!reader) throw new Error("No body in response");
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+
+    if (value) {
+      chunks.push(value);
+      loaded += value.byteLength;
+
+      if (total) {
+        const percent = Math.round((loaded / total) * 100);
+        console.log(`Downloaded ${percent}%`);
+      }
+    }
+  }
+
+  return new Blob(chunks);
+};
+
+export const saveBooks = async (setRefreshLibrary: Function) => {
   try {
     const dataMap: dataMapType = JSON.parse(
       localStorage.getItem(DATAMAP_KEY) ?? "null",
     );
 
-    dataMap.books.map(async ({ id, bookCoverId }: bookType) => {
-      const isDownloaded = localStorage.getItem(id);
-      if (isDownloaded) return;
+    const promises = dataMap.books.map(
+      async ({ id, bookCoverId }: bookType) => {
+        const isDownloaded = localStorage.getItem(id);
+        if (isDownloaded) return;
 
-      const book = await downloadFile(id);
-      const cover = await downloadFile(bookCoverId);
-
-      if (book && cover) {
         try {
-          const bookBody = await book.blob();
-          const coverBody = await cover.blob();
-          if (!bookBody || !coverBody) return;
+          // Download the book file
+          const bookResponse = await downloadFile(id);
+          if (bookResponse) {
+            await downloadTime(bookResponse).then((book) => {
+              saveFile(id, book);
+            });
+          }
 
-          saveFile(id, bookBody);
-          saveFile(bookCoverId, coverBody);
-        } catch (e) {
-          console.log(e);
+          // Download the cover file
+          const coverResponse = await downloadFile(bookCoverId);
+          if (coverResponse) {
+            await downloadTime(coverResponse).then((cover) => {
+              saveFile(bookCoverId, cover);
+            });
+          }
+
+          setTimeout(() => {
+            setRefreshLibrary();
+          }, 2000);
+        } catch (error) {
+          console.error("Error downloading files for book:", id, error);
         }
-      }
-    });
+      },
+    );
+
+    await Promise.all(promises);
   } catch (e) {
-    console.log(e);
+    console.error("saveBooks failed:", e);
   }
 };

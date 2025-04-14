@@ -1,6 +1,6 @@
 "use client";
 import { useSession } from "next-auth/react";
-import { bookType, dataMapType, Orders, Visuals } from "../../types";
+import { bookType, Orders, Visuals } from "../../types";
 import { useEffect, useState } from "react";
 import {
   DATAMAP_KEY,
@@ -20,6 +20,7 @@ import LastOpenedBook from "../LastOpenedBook/LastOpenedBook";
 
 export default function Library({
   refreshLibrary,
+  setRefreshLibrary,
   searchValue,
 }: {
   refreshLibrary: boolean;
@@ -41,11 +42,11 @@ export default function Library({
     const getOrder: string | null = localStorage.getItem("order");
 
     if (getVisual) setVisual(Visuals[getVisual as keyof typeof Visuals]);
-
     if (getOrder) setOrder(Orders[getOrder as keyof typeof Orders]);
 
-    getDataMapInCloud();
-    saveBooks();
+    getDataMapInCloud(setRefreshLibrary).then(() => {
+      saveBooks(setRefreshLibrary);
+    });
   }, [session]);
 
   const AddBook = () => {
@@ -119,9 +120,16 @@ export default function Library({
 
   const LoadingOrNoSession = () => {
     return (
-      <div className="flex flex-col text-center items-center gap-10 justify-center text-3xl absolute left-1/2 top-1/2 transform  -translate-1/2">
+      <div
+        className={`flex flex-col text-center items-center gap-10 justify-center
+                    text-3xl absolute left-1/2 top-1/2 transform  -translate-1/2 
+                    pb-10`}
+      >
         {status == "loading" ? (
-          <RiLoader4Line className="animate-spin text-7xl duration-500" />
+          <div className="flex flex-col items-center justify-center">
+            <RiLoader4Line className="animate-spin text-7xl duration-500" />
+            <p>{t("message::library")}</p>
+          </div>
         ) : (
           <>
             {t("message::login")}
@@ -145,23 +153,21 @@ export default function Library({
 
   return (
     <div className="flex flex-col items-center justify-center w-full p-4 md:pr-20">
-      {session ? (
+      {session || (session && refreshLibrary) ? (
         <>
-          <LastOpenedBook />
           <LibraryFilters
             setTagFilter={setTagFilter}
             setVisual={setVisual}
             setOrder={setOrder}
           />
+          <LastOpenedBook />
+          <div className={isGridClassList}>
+            <GetBooks />
+          </div>
         </>
-      ) : null}
-      <div className={isGridClassList}>
-        {session || (session && refreshLibrary) ? (
-          <GetBooks />
-        ) : (
-          <LoadingOrNoSession />
-        )}
-      </div>
+      ) : (
+        <LoadingOrNoSession />
+      )}
     </div>
   );
 }

@@ -25,18 +25,18 @@ export default function Card({
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
+  const card = cardRef.current;
+
   const [cover, setCover] = useState<string | null>(null);
+
+  const t = useTranslations("Card");
+  const [reload, setReload] = useReload();
+
   const [colors, setColors] = useState<{
     r: number;
     g: number;
     b: number;
   } | null>();
-
-  const card = cardRef.current;
-
-  const t = useTranslations("Card");
-  const [reload, setReload] = useReload();
-
   const setBackground = (cover: string) => {
     if (!cover) return;
 
@@ -47,12 +47,15 @@ export default function Card({
   };
 
   useEffect(() => {
-    const getCover = localStorage.getItem(coverId);
-    if (!getCover) return;
+    const getCover =
+      typeof window != "undefined" ? localStorage.getItem(coverId) : null;
+
+    if (!getCover) return setReload();
 
     setCover(getCover);
     setBackground(getCover);
-  }, [coverId, cover]);
+    console.log(cover);
+  }, [coverId, cover, reload]);
 
   return (
     <BaseView
@@ -76,7 +79,7 @@ export default function Card({
           {title.length > 25 ? title.slice(0, 25).concat("...") : title}
         </header>
         <hr className="w-full mb-2" />
-        {cover || (cover && reload) ? (
+        {cover ? (
           <Image
             src={cover}
             id={coverId}

@@ -46,7 +46,7 @@ export default function Header({
       localStorage.getItem(DATAMAP_KEY) ?? "null",
     );
 
-    await getDataMapInCloud().then(() => {
+    await getDataMapInCloud(setRefreshLibrary).then(() => {
       refreshButton.classList.remove("animate-spin");
       setSendNotification({
         title: "📙 Library refreshed!",
@@ -118,7 +118,7 @@ export default function Header({
             onClick={() => mobileRef.current?.classList.toggle("hidden")}
             className={`hidden bg-main md:z-1 rounded-none md:rounded-xl md:bg-transparent md:backdrop-blur-none md:flex-row md:flex
                         flex-col-reverse fixed z-12 top-0 left-0 right-0 bottom-0 md:static font-bold 
-                        cursor-pointer items-center justify-center gap-10`}
+                        cursor-pointer items-center p-2 justify-center gap-10`}
           >
             <div className="md:flex mt-32 md:mt-0">
               <button

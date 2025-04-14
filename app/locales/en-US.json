@@ -19,6 +19,7 @@
 
   "Library": {
     "library": "Library",
+    "message::loading": "Loading library...",
     "message::login": "Please, login to access your library!",
     "message::addNewBook": "Add a new book to start",
     "message::bookNotFound": "Couldn't found term \"{searchValue}\" in your library!"

@@ -49,7 +49,6 @@ export default function ListItem({
   useEffect(() => {
     const getCover =
       typeof window != "undefined" ? localStorage.getItem(coverId) : null;
-
     if (!getCover) return setReload();
 
     setCover(getCover);
@@ -90,7 +89,8 @@ export default function ListItem({
                 <Image
                   className="rounded-xl border-2 border-white"
                   src={cover}
-                  alt=""
+                  id={coverId}
+                  alt={t("title::cover", { title })}
                   width={50}
                   height={50}
                 />

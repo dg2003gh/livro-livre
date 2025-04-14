@@ -171,10 +171,10 @@ export const downloadFile = async (
 ): Promise<Response | undefined> => {
   const session = await getSession();
 
-  if (!fileId || !session) return;
+  if (!fileId || !session) return undefined;
 
   try {
-    const response = await fetch(
+    return await fetch(
       `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`,
       {
         method: "GET",
@@ -182,12 +182,11 @@ export const downloadFile = async (
           Authorization: `Bearer ${session.accessToken}`,
         },
       },
-    );
-
-    return response;
+    ).then((response) => {
+      return response;
+    });
   } catch (error) {
     console.error(`Error downloading file ${fileId}: `, error);
-    return error as Response;
   }
 };
 

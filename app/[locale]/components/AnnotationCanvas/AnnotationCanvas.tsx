@@ -83,10 +83,10 @@ export default function AnnotationCanvas({
 
     switch (tool) {
       case Tools.PENCIL:
-        pencil(ctx, currentPos, color, 5);
+        pencil(ctx, currentPos, color, 1);
         break;
       case Tools.MARKER:
-        pencil(ctx, currentPos, color, 10, 0.5);
+        pencil(ctx, currentPos, color, 5, 0.5);
         break;
       case Tools.CIRCLE:
         circle(ctx, initPos.current, currentPos);
@@ -117,7 +117,6 @@ export default function AnnotationCanvas({
 
     ctx.beginPath();
     ctx.lineCap = "round";
-    ctx.lineWidth = 5;
     ctx.globalCompositeOperation = "source-over";
     ctx.strokeStyle = rgbToHex(color.fg);
 
@@ -158,8 +157,20 @@ export default function AnnotationCanvas({
     if (!canvas) return;
 
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+
+      canvas.style.width = `${rect.width}px`;
+      canvas.style.height = `${rect.height}px`;
+
+      const ctx = canvas.getContext("2d");
+      if (ctx) {
+        ctx.scale(dpr, dpr);
+      }
+
       redraw();
     };
 
@@ -201,7 +212,7 @@ export default function AnnotationCanvas({
       onTouchStart={handlerMouseDown}
       onTouchEnd={handlerMouseUp}
       onTouchMove={handlerMove}
-      className="absolute z-10 top-0 left-0 w-full h-full touch-none"
+      className="absolute z-10 top-0 left-0 w-screen h-screen touch-none"
     />
   );
 }

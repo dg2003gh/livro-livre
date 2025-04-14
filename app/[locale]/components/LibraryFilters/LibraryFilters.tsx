@@ -103,7 +103,7 @@ export default function LibraryFilters({
 
   const initFilters = () => {
     const visual = document.querySelector(
-      `#${localStorage.getItem("visual") ?? "Grid"}`,
+      `#${localStorage.getItem("visual") ?? "GRID"}`,
     ) as HTMLDivElement;
     const order = document.querySelector(
       `#${localStorage.getItem("order") ?? "ASCENDENT"}`,
