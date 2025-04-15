@@ -54,7 +54,6 @@ export default function Card({
 
     setCover(getCover);
     setBackground(getCover);
-    console.log(cover);
   }, [coverId, cover, reload]);
 
   return (

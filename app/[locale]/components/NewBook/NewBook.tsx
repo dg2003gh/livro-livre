@@ -163,6 +163,7 @@ export default function NewBook({
       console.error("Error uploading files:", error);
     }
 
+    setRefreshLibrary();
     form.submitButton.disabled = false;
   };
 
