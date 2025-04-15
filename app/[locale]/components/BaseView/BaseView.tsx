@@ -74,7 +74,7 @@ export default function BaseView({
 
     if (!base || !wrapper) return;
 
-    base.classList.add("saturate-0");
+    wrapper.classList.add("saturate-0");
     base.classList.remove("hover:scale-105");
 
     const bookIndex = dataMap.books.findIndex(({ id }) => id == bookId);

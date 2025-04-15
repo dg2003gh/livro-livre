@@ -147,10 +147,12 @@ export default function NewBook({
           author: "from upload system",
         });
 
-        saveFile(bookId, book);
-        saveFile(bookCoverId, bookCover);
+        await getDataMapInCloud(setRefreshLibrary).then(() => {
+          saveFile(bookId, book);
+          saveFile(bookCoverId, bookCover);
 
-        await getDataMapInCloud(setRefreshLibrary);
+          setRefreshLibrary();
+        });
       } else {
         setSendNotification({
           title: "❌ Book was not uploaded!",
@@ -163,7 +165,6 @@ export default function NewBook({
       console.error("Error uploading files:", error);
     }
 
-    setRefreshLibrary();
     form.submitButton.disabled = false;
   };
 
